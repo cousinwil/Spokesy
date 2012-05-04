@@ -1,0 +1,97 @@
+/* type.less - typography, reusable color classes
+  --------------------------------------------------------------------------- */
+.special-font() {
+    font-family: 'Trocchi', 'Georgia', serif;
+}
+h1 {
+  margin-bottom: 20px;
+  font-size: 30px;
+  line-height: 1.2;
+  .special-font();
+}
+h2 {
+  color: @red;
+  font-size: 26px;
+  margin-bottom: 14px;
+  .special-font();
+}
+.strava-leaders h2 {
+  margin-bottom: 0;
+}
+h3 {
+  color: @blue;
+  font-size: 22px;
+  margin-bottom: 14px;  
+  .special-font();
+}
+h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  .special-font();
+}
+nav h1 {
+  margin-bottom: 0;
+  line-height: 42px;
+  font-size: 34px;
+}
+p {
+  margin-bottom: 14px;  
+}
+.red, .error {
+  color: @red;
+  font-weight: bold;
+}
+.gray, .bg-yellow, .bg-white, .bg-blue {
+  color: @gray;
+}
+.blue, .success {
+  color: @blue;
+}
+.yellow, .alt {
+  color: @yellow;
+}
+.white, .bg-gray, .bg-red {
+  color: @mainBG;
+}
+.bg-blue h2 {
+  color: @mainBG;
+}
+.bg-blue h3 {
+  color: @mainBG;
+}
+.sub-text {
+  font-size: 70%;
+}
+ol {
+  margin-left: 25px;
+  margin-bottom: 20px;
+}
+ol li {
+  margin-bottom: 8px;
+}
+.bg-red {
+  background-color: @red;
+}
+.bg-gray, .alt {
+  background-color: @gray;
+}
+.bg-blue {
+  background-color: @blue;
+}
+.bg-yellow {
+  background-color: @yellow;
+}
+.bg-white {
+  background-color: @mainBG;
+}
+.footnote {
+  margin: 6px 0 0;
+  font-size: 12px;
+}
+.banner-quote {
+  .special-font();
+  font-size: 22px;
+}
+form {
+  font-size: 14px;
+}

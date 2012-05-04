@@ -1,0 +1,470 @@
+/* app.less - The non-eeze based css generator for the application's CSS! 
+  --------------------------------------------------------------------------- */
+/* css3.less - CSS3 mixings for faster coding - just pass the declaration once 
+         and it executes the browser specific prefixes also.
+  --------------------------------------------------------------------------- */
+/* variables.less - makes writing and updating CSS much fasterby allowing you
+       to set global colors, fonts, etc.
+  --------------------------------------------------------------------------- */
+/* type.less - typography, reusable color classes
+  --------------------------------------------------------------------------- */
+h1 {
+  margin-bottom: 20px;
+  font-size: 30px;
+  line-height: 1.2;
+  font-family: 'Trocchi', 'Georgia', serif;
+}
+h2 {
+  color: #f93333;
+  font-size: 26px;
+  margin-bottom: 14px;
+  font-family: 'Trocchi', 'Georgia', serif;
+}
+.strava-leaders h2 {
+  margin-bottom: 0;
+}
+h3 {
+  color: #5cb3d1;
+  font-size: 22px;
+  margin-bottom: 14px;
+  font-family: 'Trocchi', 'Georgia', serif;
+}
+h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-family: 'Trocchi', 'Georgia', serif;
+}
+nav h1 {
+  margin-bottom: 0;
+  line-height: 42px;
+  font-size: 34px;
+}
+p {
+  margin-bottom: 14px;
+}
+.red,
+.error {
+  color: #f93333;
+  font-weight: bold;
+}
+.gray,
+.bg-yellow,
+.bg-white,
+.bg-blue {
+  color: #454545;
+}
+.blue,
+.success {
+  color: #5cb3d1;
+}
+.yellow,
+.alt {
+  color: #fdeab8;
+}
+.white,
+.bg-gray,
+.bg-red {
+  color: #ffffff;
+}
+.bg-blue h2 {
+  color: #ffffff;
+}
+.bg-blue h3 {
+  color: #ffffff;
+}
+.sub-text {
+  font-size: 70%;
+}
+ol {
+  margin-left: 25px;
+  margin-bottom: 20px;
+}
+ol li {
+  margin-bottom: 8px;
+}
+.bg-red {
+  background-color: #f93333;
+}
+.bg-gray,
+.alt {
+  background-color: #454545;
+}
+.bg-blue {
+  background-color: #5cb3d1;
+}
+.bg-yellow {
+  background-color: #fdeab8;
+}
+.bg-white {
+  background-color: #ffffff;
+}
+.footnote {
+  margin: 6px 0 0;
+  font-size: 12px;
+}
+.banner-quote {
+  font-family: 'Trocchi', 'Georgia', serif;
+  font-size: 22px;
+}
+form {
+  font-size: 14px;
+}
+/* buttons.less 
+   ------------------------------------------------------------------------- */
+.btn {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  color: white !important;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+  padding: 3px 6px;
+  text-align: center;
+  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+  vertical-align: middle;
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+.btn-red {
+  border: 1px solid #8a0000;
+  background-color: #f93333;
+  background-image: -webkit-linear-gradient(top, #f93333 0%, #c62828 50%, #941e1e 50%, #751717 100%);
+  background-image: -moz-linear-gradient(top, #f93333 0%, #c62828 50%, #941e1e 50%, #751717 100%);
+  background-image: -ms-linear-gradient(top, #f93333 0%, #c62828 50%, #941e1e 50%, #751717 100%);
+  background-image: -o-linear-gradient(top, #f93333 0%, #c62828 50%, #941e1e 50%, #751717 100%);
+  background-image: linear-gradient(top, #f93333 0%, #c62828 50%, #941e1e 50%, #751717 100%);
+}
+.btn-blue {
+  border: 1px solid #004462;
+  background-color: #5cb3d1;
+  background-image: -webkit-linear-gradient(top, #5cb3d1 0%, #4c93ac 50%, #3e798d 50%, #316172 100%);
+  background-image: -moz-linear-gradient(top, #5cb3d1 0%, #4c93ac 50%, #3e798d 50%, #316172 100%);
+  background-image: -ms-linear-gradient(top, #5cb3d1 0%, #4c93ac 50%, #3e798d 50%, #316172 100%);
+  background-image: -o-linear-gradient(top, #5cb3d1 0%, #4c93ac 50%, #3e798d 50%, #316172 100%);
+  background-image: linear-gradient(top, #5cb3d1 0%, #4c93ac 50%, #3e798d 50%, #316172 100%);
+}
+.buy-now-btn {
+  font-size: 12px;
+}
+/* application.less - Base Global CSS
+  --------------------------------------------------------------------------- */
+body {
+  background-color: #ffffff;
+  color: #454545;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+}
+nav {
+  background-color: #454545;
+  -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  height: 62px;
+  padding-top: 0;
+  padding-bottom: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  border-bottom: 4px solid #f93333;
+}
+.nav-pad {
+  padding: 10px 0;
+}
+.logo {
+  background-image: url(/assets/logo.png);
+  background-repeat: no-repeat;
+  height: 36px;
+  width: 380px;
+}
+.nav-list {
+  margin: 0 auto;
+  font-size: 18px;
+  font-family: 'Trocchi', 'Georgia', serif;
+  width: 502px;
+}
+.nav-list li a {
+  display: block;
+  padding: 21px 20px 20px 16px;
+}
+.nav-circle {
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  border-radius: 7px;
+  margin-right: 8px;
+}
+.nav-arrow {
+  height: 0;
+  width: 0;
+  display: inline-block;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 7px solid #5cb3d1;
+}
+.red-hover:hover {
+  background-color: #f93333;
+}
+.red-hover:hover,
+.white-hover:hover,
+.blue-hover:hover {
+  color: #454545;
+}
+.white-hover:hover {
+  background-color: #ffffff;
+}
+.blue-hover:hover {
+  background-color: #5cb3d1;
+}
+.red-hover:hover .nav-circle,
+.white-hover:hover .nav-circle,
+.blue-hover:hover .nav-circle {
+  background-color: #454545;
+}
+.nav-list a {
+  text-decoration: none;
+}
+.about-text {
+  background-color: #f93333;
+  -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  padding-top: 24px;
+  padding-bottom: 10px;
+  position: relative;
+  width: 100%;
+  top: 14px;
+  z-index: 100;
+}
+article {
+  padding: 50px 0px 60px;
+  position: relative;
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  margin-top: -5px;
+}
+.faux-main {
+  top: -600px;
+  -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+.main {
+  z-index: 21;
+  padding-top: 65px;
+  border-bottom: 4px solid #454545;
+}
+.faux-main {
+  z-index: 22;
+}
+.second {
+  z-index: 20;
+}
+.third {
+  z-index: 19;
+}
+.fourth {
+  z-index: 18;
+}
+.fifth {
+  z-index: 17;
+}
+.buy-now {
+  margin: 0 0 6px;
+}
+.buy-now li {
+  float: left;
+  margin-right: 14px;
+  list-style-type: none;
+  line-height: 20px;
+}
+.price {
+  font-weight: bold;
+  font-size: 20px;
+}
+.qty {
+  width: 28px;
+}
+.buy-now select,
+.buy-now input,
+.buy-now button {
+  margin-top: -2px;
+}
+.merch {
+  background-image: url(/assets/merch.png);
+  background-repeat: no-repeat;
+  height: 32px;
+  width: 281px;
+  margin-bottom: 20px;
+}
+.stats {
+  background-image: url(/assets/stats.png);
+  background-repeat: no-repeat;
+  height: 32px;
+  width: 255px;
+  margin-bottom: 20px;
+}
+.info {
+  background-image: url(/assets/info.png);
+  background-repeat: no-repeat;
+  height: 32px;
+  width: 209px;
+  margin-bottom: 20px;
+}
+.sponsors {
+  background-image: url(/assets/sponsors.png);
+  background-repeat: no-repeat;
+  height: 32px;
+  width: 169px;
+  margin-bottom: 20px;
+}
+.product-img {
+  margin: 14px auto;
+}
+.strava-leaders ol {
+  font-size: 16px;
+}
+.hero-image {
+  background-image: url(/assets/alpine-yammer-hero.jpg);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  margin: 6px 0 0;
+  height: 350px;
+  border: 6px solid white;
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+ul li {
+  list-style-type: none;
+}
+.relative {
+  position: relative;
+}
+.bullet {
+  margin-left: 18px;
+  margin-bottom: 8px;
+  list-style-type: disc;
+}
+.faux-row {
+  margin-top: 20px;
+}
+.more-indent {
+  margin-left: 30px;
+}
+.orgs {
+  margin-bottom: 18px;
+}
+.stat-icon {
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+.banner {
+  background: url(/assets/banners/california-hills.jpg) no-repeat left bottom;
+  height: 540px;
+}
+.banner-quoted {
+  font-size: 18px;
+  margin-left: 6px;
+  display: inline-block;
+}
+.inline {
+  display: inline;
+}
+nav .inline {
+  vertical-align: top;
+}
+.spokes {
+  margin-right: 14px;
+}
+.hide {
+  display: none;
+}
+.quote-container {
+  background-image: url(/assets/bg-weave-white.png) /*rgba(253,234,184,0.75)*/;
+  padding: 30px 5%;
+  margin: 0;
+  width: 88%;
+  height: 540px;
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  border-right: 4px solid #ffffff;
+  border-left: 4px solid #ffffff;
+  font-size: 18px;
+  line-height: 1.4;
+}
+.mailchimp {
+  margin: 20px 0 14px;
+}
+.tri-form li {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 30px;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+.tri-form label {
+  display: block;
+  margin-top: 2px;
+  font-family: 'Trocchi', 'Georgia', serif;
+}
+.text-input {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 16px;
+  color: #454545;
+  width: 220px;
+}
+#mc-embedded-subscribe {
+  margin-top: 3px;
+}
+.attribution {
+  position: absolute;
+  z-index: 22;
+  height: 12px;
+  bottom: -34px;
+  right: 0;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #454545;
+  padding: 10px;
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+.sub {
+  font-size: 16px;
+}
+.founder-quote {
+  font-family: 'Trocchi', 'Georgia', serif;
+}
+/* media-queries.less - Media Queries for size-specific layouts 
+  --------------------------------------------------------------------------- */
+@media only screen and (min-width: 1024px) {
+  /* responsive-full.less - Responsive CSS for Laptops and Desktops
+    --------------------------------------------------------------------------- */
+  .golden-rule {
+    margin-top: 6px;
+  }
+  .left-indent {
+    display: block;
+    padding: 0 8px 0 12px;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  /* responsice-tablet.less - Responsive CSS for Small Laptops and Tablets
+    --------------------------------------------------------------------------- */
+}
+@media handheld, only screen and (max-width: 767px) {
+  /* responsive-mobile.less - Responsive CSS for Mobile Devices
+    --------------------------------------------------------------------------- */
+}

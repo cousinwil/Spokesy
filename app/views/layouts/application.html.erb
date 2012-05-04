@@ -1,14 +1,52 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<!--[if IE]><![endif]-->
+<!--[if lt IE 7]> <html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9]> <html class="ie ie9" lang="en"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-  <title>SpokeGeek</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Spoke Geek Bike Club</title>
+  
+  <!-- og: == 'Open Graph Protocol' - Makes you Facebook "Like" Button & Sharing Friendly -->
+  <meta name="title" content="Spoke Geek Bicycle Club" property="og:title" />
+  <meta name="" content="" property="og:type" />
+  <meta name="" content="http://spokegeek.com/" property="og:url" />
+  <meta name="" content="" property="og:image" />
+  <meta name="" content="Spoke Geek Bicycle Club" property="og:site_name" />
+  <meta name="" content="" property="fb:admins" />
+  <meta name="description" content="The Spoke Geek Bicycle Club is a casual bike club which promotes cycling as part of a healtier, more stress-free, start-up lifestyle. Everyone is free to join us on our group rides and on Strava." property="og:description" />
+  <meta name="copyright" content="Wil Everts, 2012 All Rights Reserved" />
+  <meta name="author" content="Wil Everts" />
   <%= csrf_meta_tags %>
+
+  <link href='http://fonts.googleapis.com/css?family=Trocchi' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag "eeze.min.css", :media => "all" %>
+  <%= stylesheet_link_tag "app", :media => "all" %>
+
+  <link rel="shortcut icon" href=""/>
+  <link rel="apple-touch-icon" href=""/>
+
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 </head>
 <body>
 
+<%= render "layouts/nav" -%>
+
 <%= yield %>
 
+<%= render "layouts/footer" -%>
+  <!-- Javascript Last -->
+
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+  <![endif]--> 
+
 </body>
+<!-- we built this city on rock and roll (and http://eeze.us by @cousinwil) -->
 </html>

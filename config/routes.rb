@@ -1,7 +1,9 @@
 SpokeGeek::Application.routes.draw do
   get "users/new"
 
-  root :to => 'club#home'
+  root to: 'club#home'
+  
+  match '/signup',  to: 'users#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

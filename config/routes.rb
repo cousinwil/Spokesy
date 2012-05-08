@@ -1,4 +1,6 @@
 SpokeGeek::Application.routes.draw do
+  get "users/new"
+
   root :to => 'club#home'
 
   # The priority is based upon order of creation:

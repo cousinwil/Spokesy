@@ -35,11 +35,12 @@
 </head>
 <body>
 
-<%= render "layouts/nav" -%>
+  <%= render "layouts/nav" -%>
 
-<%= yield %>
+  <%= yield %>
 
-<%= render "layouts/footer" -%>
+  <%= render "layouts/footer" -%>
+
   <!-- Javascript Last -->
 
   <!--[if lt IE 7 ]>
@@ -47,6 +48,7 @@
     <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
   <![endif]--> 
 
+  <%= debug(params) if Rails.env.development? -%>
 </body>
 <!-- we built this city on rock and roll (and http://eeze.us by @cousinwil) -->
 </html>

@@ -104,19 +104,19 @@
     </div>
     <div class="row">
       <div class="threecol">
-        <h2 class="white">Most Mileage</h2>
+        <h2 class="white">Club Totals</h2>
         <img src="/assets/stat-mileage.png" class="stat-icon">
-        <h3 class="white">Individual Riders</h3>
+        <h3 class="white">This Month</h3>
         <ol class="white">
-          <li>Adam Pisoni - 1,088.88 miles</li>
-          <li>Wil Everts - 998.88 miles</li>
-          <li>Bob Remeika - 888.88 miles</li>
+          <li>Total Miles <%= number_with_precision(@total_miles_month, :precision => 1) if @total_miles_month %></li>
+          <li>Commute Miles <%= number_with_precision(@commute_miles_month, :precision => 1) if @commute_miles_month %></li>
+          <li>Longest Ride <%= number_with_precision(@longest_ride_month, :precision => 1) if @longest_ride_month %> <%= '(' + @longest_rider_month.to_s + ')' if @longest_rider_month %></li>
         </ol>
-        <h3 class="white">Start-up Teams</h3>
+        <h3 class="white">All Time</h3>
         <ol class="white">
-          <li>Strava - 99,387 miles</li>
-          <li>Yammer - 99,387 miles</li>
-          <li>Change.org - 99,387 miles</li>
+          <li>Total Miles - <%= number_with_precision(@total_miles, :precision => 1) if @total_miles %></li>
+          <li>Commute Miles - <%= number_with_precision(@commute_miles, :precision => 1) if @commute_miles %></li>
+          <li>Longest Ride - <%= number_with_precision(@longest_ride, :precision => 1) if @longest_ride %> <%= '(' + @longest_rider.to_s + ')' if @longest_rider %></li>
         </ol>
       </div>
       <div class="threecol">

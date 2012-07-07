@@ -20,7 +20,7 @@ class Ride < ActiveRecord::Base
     return riders
   end
 
-  #Finds the total vertical of the given athlete id
+    #Finds the total vertical of the given athlete id
   def self.findVert(rider_name)
     rides = Ride.where('name = ?', rider_name)
     vert = 0
@@ -30,16 +30,34 @@ class Ride < ActiveRecord::Base
     return vert
   end
 
+  def self.getPoints(rider_name)
+    rides = Ride.where('name = ?', rider_name)
+    points = 0
+    for ride in rides
+      points += (ride.vertical)/100
+      points += ride.distance.to_f*0.000621
+    end
+    return points.to_i
+  end
+
+  def self.highestPts
+    return findHighest(method(:getPoints))
+  end
+
+  def self.highestVert
+    return findHighest(method(:findVert))
+  end
+
   #Returns the three highest vertical values and the respective names
   #Display as follows
   #1st highest[3] - highest[0]
   #2nd highest[4] - highest[1]
   #3rd highest[5] - highest[2]
-  def self.findHighestVert
+  def self.findHighest(var)
     riders = getRiders
     highest = [0, 0, 0, '', '', '']
     for rider in riders
-      vert = findVert(rider)
+      vert = var.call(rider)
       if vert >= highest[0]
         highest[2] = highest[1]
         highest[5] = highest[4]

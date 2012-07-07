@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120508031459) do
+ActiveRecord::Schema.define(:version => 20120707180059) do
+
+  create_table "rides", :force => true do |t|
+    t.integer  "athlete"
+    t.decimal  "points"
+    t.decimal  "speed"
+    t.decimal  "vertical"
+    t.decimal  "distance"
+    t.boolean  "commute"
+    t.string   "name"
+    t.date     "date"
+    t.integer  "ride_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

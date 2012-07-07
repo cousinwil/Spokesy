@@ -1,4 +1,5 @@
 module ApplicationHelper
+
  def title_text(page_title)                           # Method definition
     base_title = "Spoke Geek"
     if !page_title || page_title.empty? || page_title == 'Home'      # Boolean test

@@ -108,25 +108,28 @@
         <img src="/assets/stat-mileage.png" class="stat-icon">
         <h3 class="white">This Month</h3>
         <ol class="white">
-          <li>Total Miles <%= number_with_precision(@total_miles_month, :precision => 1) if @total_miles_month %></li>
-          <li>Commute Miles <%= number_with_precision(@commute_miles_month, :precision => 1) if @commute_miles_month %></li>
-          <li>Longest Ride <%= number_with_precision(@longest_ride_month, :precision => 1) if @longest_ride_month %> <%= '(' + @longest_rider_month.to_s + ')' if @longest_rider_month %></li>
+          <% data = getData(Ride.where('date > ?', Date.today - 28)) %>
+          <li>Total Miles <%= number_with_precision(data[0], :precision => 1) if data[0] %></li>
+          <li>Commute Miles <%= number_with_precision(data[1], :precision => 1) if data[1] %></li>
+          <li>Longest Ride <%= number_with_precision(data[2], :precision => 1) if data[2] %> <%= '(' + data[3].to_s + ')' if data[3] %></li>
         </ol>
         <h3 class="white">All Time</h3>
         <ol class="white">
-          <li>Total Miles - <%= number_with_precision(@total_miles, :precision => 1) if @total_miles %></li>
-          <li>Commute Miles - <%= number_with_precision(@commute_miles, :precision => 1) if @commute_miles %></li>
-          <li>Longest Ride - <%= number_with_precision(@longest_ride, :precision => 1) if @longest_ride %> <%= '(' + @longest_rider.to_s + ')' if @longest_rider %></li>
+          <% data = getData(Ride.all) %>
+          <li>Total Miles - <%= number_with_precision(data[0], :precision => 1) if data[0] %></li>
+          <li>Commute Miles - <%= number_with_precision(data[1], :precision => 1) if data[1] %></li>
+          <li>Longest Ride - <%= number_with_precision(data[2], :precision => 1) if data[2] %></li><%= '(' + data[3].to_s + ')' if data[3] %>
         </ol>
       </div>
       <div class="threecol">
         <h2 class="white">Most Vertical</h2>
+        <% ind_vert = Ride.findHighestVert %>
         <img src="/assets/stat-vert.png" class="stat-icon">
         <h3 class="white">Individual Riders</h3>
         <ol class="white">
-          <li>Adam Pisoni - 99,387 feet</li>
-          <li>Wil Everts - 99,387 feet</li>
-          <li>Bob Remeika - 99,387 feet</li>
+          <li><%= ind_vert[3] %> - <%= ind_vert[0] %> feet</li>
+          <li><%= ind_vert[4] %> - <%= ind_vert[1] %> feet</li>
+          <li><%= ind_vert[5] %> - <%= ind_vert[2] %> feet</li>
         </ol>
         <h3 class="white">Start-up Teams</h3>
         <ol class="white">

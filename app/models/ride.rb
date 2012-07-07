@@ -40,12 +40,27 @@ class Ride < ActiveRecord::Base
     return points.to_i
   end
 
+  def self.getAveSpeed(rider_name)
+    rides = Ride.where('name = ?', rider_name)
+    total = 0
+    num_rides = 0
+    for ride in rides
+      num_rides += 1
+      total += ride.speed
+    end
+    return (total/num_rides)*2.2356
+  end
+
   def self.highestPts
     return findHighest(method(:getPoints))
   end
 
   def self.highestVert
     return findHighest(method(:findVert))
+  end
+
+  def self.highestAveSpeed
+    return findHighest(method(:getAveSpeed))
   end
 
   #Returns the three highest vertical values and the respective names

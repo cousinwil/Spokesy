@@ -160,9 +160,10 @@
         <img src="/assets/stat-fastest.png" class="stat-icon">
         <h3 class="white">Individual Riders</h3>
         <ol class="white">
-          <li>Adam Pisoni - 15.8mph avg</li>
-          <li>Wil Everts - 15.8mph avg</li>
-          <li>Bob Remeika - 15.8mph avg</li>
+          <% fastest = Ride.highestAveSpeed %>
+          <li><%= fastest[3] %> - <%= number_with_precision(fastest[0], :precision => 2) %>mph avg</li>
+          <li><%= fastest[4] %> - <%= number_with_precision(fastest[1], :precision => 2) %>mph avg</li>
+          <li><%= fastest[5] %> - <%= number_with_precision(fastest[2], :precision => 2) %>mph avg</li>
         </ol>
         <h3 class="white">Start-up Teams</h3>
         <ol class="white">

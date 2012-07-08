@@ -19,6 +19,15 @@ class Ride < ActiveRecord::Base
     return vert
   end
 
+  def self.distance(member)
+    rides = Ride.where('athlete = ?', member.id)
+    length = []
+    for ride in rides
+      length.push((ride.vertical).to_i)
+    end
+    return length
+  end
+
   def self.getPoints(member)
     rides = Ride.where('athlete = ?', member.id)
     points = 0

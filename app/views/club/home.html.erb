@@ -108,25 +108,28 @@
         <img src="/assets/stat-mileage.png" class="stat-icon">
         <h3 class="white">This Month</h3>
         <ol class="white">
-          <li>Total Miles <%= number_with_precision(@total_miles_month, :precision => 1) if @total_miles_month %></li>
-          <li>Commute Miles <%= number_with_precision(@commute_miles_month, :precision => 1) if @commute_miles_month %></li>
-          <li>Longest Ride <%= number_with_precision(@longest_ride_month, :precision => 1) if @longest_ride_month %> <%= '(' + @longest_rider_month.to_s + ')' if @longest_rider_month %></li>
+          <% data = getData(Ride.where('date > ?', Date.today - 28)) %>
+          <li>Total Miles <%= number_with_precision(data[0], :precision => 1) if data[0] %></li>
+          <li>Commute Miles <%= number_with_precision(data[1], :precision => 1) if data[1] %></li>
+          <li>Longest Ride <%= number_with_precision(data[2], :precision => 1) if data[2] %> <%= '(' + data[3].to_s + ')' if data[3] %></li>
         </ol>
         <h3 class="white">All Time</h3>
         <ol class="white">
-          <li>Total Miles - <%= number_with_precision(@total_miles, :precision => 1) if @total_miles %></li>
-          <li>Commute Miles - <%= number_with_precision(@commute_miles, :precision => 1) if @commute_miles %></li>
-          <li>Longest Ride - <%= number_with_precision(@longest_ride, :precision => 1) if @longest_ride %> <%= '(' + @longest_rider.to_s + ')' if @longest_rider %></li>
+          <% data = getData(Ride.all) %>
+          <li>Total Miles - <%= number_with_precision(data[0], :precision => 1) if data[0] %></li>
+          <li>Commute Miles - <%= number_with_precision(data[1], :precision => 1) if data[1] %></li>
+          <li>Longest Ride - <%= number_with_precision(data[2], :precision => 1) if data[2] %></li><%= '(' + data[3].to_s + ')' if data[3] %>
         </ol>
       </div>
       <div class="threecol">
         <h2 class="white">Most Vertical</h2>
+        <% ind_vert = Ride.highestVert %>
         <img src="/assets/stat-vert.png" class="stat-icon">
         <h3 class="white">Individual Riders</h3>
         <ol class="white">
-          <li>Adam Pisoni - 99,387 feet</li>
-          <li>Wil Everts - 99,387 feet</li>
-          <li>Bob Remeika - 99,387 feet</li>
+          <li><%= ind_vert[3] %> - <%= ind_vert[0] %> feet</li>
+          <li><%= ind_vert[4] %> - <%= ind_vert[1] %> feet</li>
+          <li><%= ind_vert[5] %> - <%= ind_vert[2] %> feet</li>
         </ol>
         <h3 class="white">Start-up Teams</h3>
         <ol class="white">
@@ -140,9 +143,10 @@
         <img src="/assets/stat-points.png" class="stat-icon">
         <h3 class="white">Individual Riders</h3>
         <ol class="white">
-          <li>Adam Pisoni  - 1,800</li>
-          <li>Wil Everts  - 1,800</li>
-          <li>Bob Remeika  - 1,800</li>
+          <% high_pts = Ride.highestPts %>
+          <li><%= high_pts[3] %> - <%= high_pts[0] %> Points</li>
+          <li><%= high_pts[4] %> - <%= high_pts[1] %> Points</li>
+          <li><%= high_pts[5] %> - <%= high_pts[2] %> Points</li>
         </ol>
         <h3 class="white">Start-up Teams</h3>
         <ol class="white">
@@ -156,9 +160,10 @@
         <img src="/assets/stat-fastest.png" class="stat-icon">
         <h3 class="white">Individual Riders</h3>
         <ol class="white">
-          <li>Adam Pisoni - 15.8mph avg</li>
-          <li>Wil Everts - 15.8mph avg</li>
-          <li>Bob Remeika - 15.8mph avg</li>
+          <% fastest = Ride.highestAveSpeed %>
+          <li><%= fastest[3] %> - <%= number_with_precision(fastest[0], :precision => 2) %>mph avg</li>
+          <li><%= fastest[4] %> - <%= number_with_precision(fastest[1], :precision => 2) %>mph avg</li>
+          <li><%= fastest[5] %> - <%= number_with_precision(fastest[2], :precision => 2) %>mph avg</li>
         </ol>
         <h3 class="white">Start-up Teams</h3>
         <ol class="white">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120629110141) do
+ActiveRecord::Schema.define(:version => 20120707180059) do
 
   create_table "members", :force => true do |t|
     t.integer  "strava_id"
@@ -23,6 +23,20 @@ ActiveRecord::Schema.define(:version => 20120629110141) do
 
   add_index "members", ["strava_id"], :name => "index_members_on_strava_id", :unique => true
   add_index "members", ["user_id"], :name => "index_members_on_user_id", :unique => true
+
+  create_table "rides", :force => true do |t|
+    t.integer  "athlete"
+    t.decimal  "points"
+    t.decimal  "speed"
+    t.decimal  "vertical"
+    t.decimal  "distance"
+    t.boolean  "commute"
+    t.string   "name"
+    t.date     "date"
+    t.integer  "ride_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

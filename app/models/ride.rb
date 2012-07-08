@@ -63,6 +63,19 @@ class Ride < ActiveRecord::Base
     return findHighest(method(:getAveSpeed))
   end
 
+  def self.saveNewRides(ride_details)
+    ride_details.each do |ride|
+      puts 'NEW RIDER: ' + ride.to_s
+      newRide = Ride.new(:commute => ride['ride']['commute'], 
+        :distance => ride['ride']['distance'].to_f,
+        :speed => ride['ride']['averageSpeed'].to_f,
+        :vertical => ride['ride']['elevationGain'].to_f,
+        :name => ride['ride']['athlete']['name'], 
+        :date => ride['ride']['startDate'], 
+        :ride_id => ride['ride']['id'])
+      newRide.save
+    end
+  end
   #Returns the three highest vertical values and the respective names
   #Display as follows
   #1st highest[3] - highest[0]

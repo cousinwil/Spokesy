@@ -1,4 +1,4 @@
-  <article class="main banner">
+<article class="main banner">
     <div class="row">
       <div class="sixcol">
       </div>
@@ -127,9 +127,9 @@
         <img src="/assets/stat-vert.png" class="stat-icon">
         <h3 class="white">Individual Riders</h3>
         <ol class="white">
-          <li><%= ind_vert[3] %> - <%= ind_vert[0] %> feet</li>
-          <li><%= ind_vert[4] %> - <%= ind_vert[1] %> feet</li>
-          <li><%= ind_vert[5] %> - <%= ind_vert[2] %> feet</li>
+          <li><%= ind_vert[3] %> - <%= number_with_precision(ind_vert[0], :precision => 0) %> feet</li>
+          <li><%= ind_vert[4] %> - <%= number_with_precision(ind_vert[1], :precision => 0) %> feet</li>
+          <li><%= ind_vert[5] %> - <%= number_with_precision(ind_vert[2], :precision => 0) %> feet</li>
         </ol>
         <h3 class="white">Start-up Teams</h3>
         <ol class="white">

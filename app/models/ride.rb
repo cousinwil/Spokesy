@@ -9,20 +9,9 @@ class Ride < ActiveRecord::Base
     return ids
   end
 
-  #Returns the list of unique athlete ids
-  def self.getRiders
-    riders = []
-    for ride in Ride.all
-      if !(riders.include? ride.name)
-        riders.push(ride.name)
-      end
-    end
-    return riders
-  end
-
     #Finds the total vertical of the given athlete id
-  def self.findVert(rider_name)
-    rides = Ride.where('name = ?', rider_name)
+  def self.findVert(member)
+    rides = Ride.where('athlete = ?', member.id)
     vert = 0
     for ride in rides
       vert += ride.vertical
@@ -30,8 +19,8 @@ class Ride < ActiveRecord::Base
     return vert
   end
 
-  def self.getPoints(rider_name)
-    rides = Ride.where('name = ?', rider_name)
+  def self.getPoints(member)
+    rides = Ride.where('athlete = ?', member.id)
     points = 0
     for ride in rides
       points += (ride.vertical)/100
@@ -40,15 +29,19 @@ class Ride < ActiveRecord::Base
     return points.to_i
   end
 
-  def self.getAveSpeed(rider_name)
-    rides = Ride.where('name = ?', rider_name)
+  def self.getAveSpeed(member)
+    rides = Ride.where('athlete = ?', member.id)
     total = 0
     num_rides = 0
     for ride in rides
       num_rides += 1
       total += ride.speed
     end
-    return (total/num_rides)*2.2356
+    if num_rides > 0
+      return (total/num_rides)*2.2356
+    else
+      return 0.0
+    end
   end
 
   def self.highestPts
@@ -72,7 +65,8 @@ class Ride < ActiveRecord::Base
         :vertical => ride['ride']['elevationGain'].to_f,
         :name => ride['ride']['athlete']['name'], 
         :date => ride['ride']['startDate'], 
-        :ride_id => ride['ride']['id'])
+        :ride_id => ride['ride']['id'],
+        :athlete => (Member.find_by_strava_id(ride['ride']['athlete']['id'])).id)
       newRide.save
     end
   end
@@ -82,25 +76,24 @@ class Ride < ActiveRecord::Base
   #2nd highest[4] - highest[1]
   #3rd highest[5] - highest[2]
   def self.findHighest(var)
-    riders = getRiders
     highest = [0, 0, 0, '', '', '']
-    for rider in riders
-      vert = var.call(rider)
-      if vert >= highest[0]
+    for member in Member.all
+      amount = var.call(member)
+      if amount >= highest[0]
         highest[2] = highest[1]
         highest[5] = highest[4]
         highest[1] = highest[0]
         highest[4] = highest[3]
-        highest[3] = rider
-        highest[0] = vert
-      elsif vert >= highest[1]
+        highest[3] = member.user_name
+        highest[0] = amount
+      elsif amount >= highest[1]
         highest[2] = highest[1]
         highest[5] = highest[4]
-        highest[1] = vert
-        highest[4] = rider
-      elsif vert > highest[2]
-        highest[2] = vert
-        highest[5] = rider
+        highest[1] = amount
+        highest[4] = member.user_name
+      elsif amount > highest[2]
+        highest[2] = amount
+        highest[5] = member.user_name
       end
     end
     return highest

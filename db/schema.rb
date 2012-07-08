@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120508031459) do
+ActiveRecord::Schema.define(:version => 20120629110141) do
+
+  create_table "members", :force => true do |t|
+    t.integer  "strava_id"
+    t.string   "user_name"
+    t.string   "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "members", ["strava_id"], :name => "index_members_on_strava_id", :unique => true
+  add_index "members", ["user_id"], :name => "index_members_on_user_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "name"

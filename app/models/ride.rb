@@ -10,11 +10,11 @@ class Ride < ActiveRecord::Base
   end
 
     #Finds the total vertical of the given athlete id
-  def self.findVert(member)
-    rides = Ride.where('athlete = ?', member.id)
+  def self.findVert(member, date)
+    rides = Ride.where('athlete = ? AND date > ?', member.id, date)
     vert = 0
     for ride in rides
-      vert += ride.vertical
+      vert += ride.vertical*3.2808399
     end
     return vert
   end
@@ -23,23 +23,23 @@ class Ride < ActiveRecord::Base
     rides = Ride.where('athlete = ?', member.id)
     length = []
     for ride in rides
-      length.push((ride.vertical).to_i)
+      length.push((ride.vertical*3.2808399).to_i)
     end
     return length
   end
 
-  def self.getPoints(member)
-    rides = Ride.where('athlete = ?', member.id)
+  def self.getPoints(member, date)
+    rides = Ride.where('athlete = ? AND date > ?', member.id, date)
     points = 0
     for ride in rides
-      points += (ride.vertical)/100
+      points += (ride.vertical*3.2808399)/100
       points += ride.distance.to_f*0.000621
     end
     return points.to_i
   end
 
-  def self.getAveSpeed(member)
-    rides = Ride.where('athlete = ?', member.id)
+  def self.getAveSpeed(member, date)
+    rides = Ride.where('athlete = ? AND date > ?' , member.id, date)
     total = 0
     num_rides = 0
     for ride in rides
@@ -53,21 +53,21 @@ class Ride < ActiveRecord::Base
     end
   end
 
-  def self.highestPts
-    return findHighest(method(:getPoints))
+  def self.highestPts(date)
+    return findHighest(method(:getPoints), date)
   end
 
-  def self.highestVert
-    return findHighest(method(:findVert))
+  def self.highestVert(date)
+    return findHighest(method(:findVert), date)
   end
 
-  def self.highestAveSpeed
-    return findHighest(method(:getAveSpeed))
+  def self.highestAveSpeed(date)
+    return findHighest(method(:getAveSpeed), date)
   end
 
   def self.saveNewRides(ride_details)
     ride_details.each do |ride|
-      puts 'NEW RIDER: ' + ride.to_s
+      puts 'ELEVATION: ' + ride['ride']['elevationGain'].to_s + ' FEET'
       newRide = Ride.new(:commute => ride['ride']['commute'], 
         :distance => ride['ride']['distance'].to_f,
         :speed => ride['ride']['averageSpeed'].to_f,
@@ -84,10 +84,10 @@ class Ride < ActiveRecord::Base
   #1st highest[3] - highest[0]
   #2nd highest[4] - highest[1]
   #3rd highest[5] - highest[2]
-  def self.findHighest(var)
+  def self.findHighest(var, date)
     highest = [0, 0, 0, '', '', '']
     for member in Member.all
-      amount = var.call(member)
+      amount = var.call(member, date)
       if amount >= highest[0]
         highest[2] = highest[1]
         highest[5] = highest[4]

@@ -123,53 +123,58 @@
       </div>
       <div class="threecol">
         <h2 class="white">Most Vertical</h2>
-        <% ind_vert = Ride.highestVert %>
+        <% past_year = (Date.today - 365).to_date %>
+        <% past_month = (Date.today - 28).to_date %>
+        <% ind_vert = Ride.highestVert(past_month) %>
         <img src="/assets/stat-vert.png" class="stat-icon">
-        <h3 class="white">Individual Riders</h3>
+        <h3 class="white">This Month</h3>
         <ol class="white">
           <li><%= ind_vert[3] %> - <%= number_with_precision(ind_vert[0], :precision => 0) %> feet</li>
           <li><%= ind_vert[4] %> - <%= number_with_precision(ind_vert[1], :precision => 0) %> feet</li>
           <li><%= ind_vert[5] %> - <%= number_with_precision(ind_vert[2], :precision => 0) %> feet</li>
         </ol>
-        <h3 class="white">Start-up Teams</h3>
+        <% ind_vert = Ride.highestVert(past_year) %>
+        <h3 class="white">All Time</h3>
         <ol class="white">
-          <li>Strava - 599,387 feet</li>
-          <li>Yammer - 599,387 feet</li>
-          <li>Change.org - 599,387 feet</li>
+          <li><%= ind_vert[3] %> - <%= number_with_precision(ind_vert[0], :precision => 0) %> feet</li>
+          <li><%= ind_vert[4] %> - <%= number_with_precision(ind_vert[1], :precision => 0) %> feet</li>
+          <li><%= ind_vert[5] %> - <%= number_with_precision(ind_vert[2], :precision => 0) %> feet</li>
         </ol>
       </div>
       <div class="threecol">
         <h2 class="white">Most Points*</h2>
         <img src="/assets/stat-points.png" class="stat-icon">
-        <h3 class="white">Individual Riders</h3>
+        <h3 class="white">This Month</h3>
         <ol class="white">
-          <% high_pts = Ride.highestPts %>
+          <% high_pts = Ride.highestPts(past_month) %>
           <li><%= high_pts[3] %> - <%= high_pts[0] %> Points</li>
           <li><%= high_pts[4] %> - <%= high_pts[1] %> Points</li>
           <li><%= high_pts[5] %> - <%= high_pts[2] %> Points</li>
         </ol>
-        <h3 class="white">Start-up Teams</h3>
+        <h3 class="white">All Time</h3>
         <ol class="white">
-          <li>Strava  - 180,000</li>
-          <li>Yammer  - 180,000</li>
-          <li>Change.org  - 180,000</li>
+          <% high_pts = Ride.highestPts(past_year) %>
+          <li><%= high_pts[3] %> - <%= high_pts[0] %> Points</li>
+          <li><%= high_pts[4] %> - <%= high_pts[1] %> Points</li>
+          <li><%= high_pts[5] %> - <%= high_pts[2] %> Points</li>
         </ol> 
       </div>
       <div class="threecol last">
         <h2 class="white">Fastest</h2>
         <img src="/assets/stat-fastest.png" class="stat-icon">
-        <h3 class="white">Individual Riders</h3>
+        <h3 class="white">This Month</h3>
         <ol class="white">
-          <% fastest = Ride.highestAveSpeed %>
+          <% fastest = Ride.highestAveSpeed(past_month) %>
           <li><%= fastest[3] %> - <%= number_with_precision(fastest[0], :precision => 2) %>mph avg</li>
           <li><%= fastest[4] %> - <%= number_with_precision(fastest[1], :precision => 2) %>mph avg</li>
           <li><%= fastest[5] %> - <%= number_with_precision(fastest[2], :precision => 2) %>mph avg</li>
         </ol>
-        <h3 class="white">Start-up Teams</h3>
+        <h3 class="white">All Time</h3>
         <ol class="white">
-          <li>Strava - 15.8mph avg</li>
-          <li>Yammer - 15.8mph avg</li>
-          <li>Change.org - 15.8mph avg</li>
+          <% fastest = Ride.highestAveSpeed(past_year) %>
+          <li><%= fastest[3] %> - <%= number_with_precision(fastest[0], :precision => 2) %>mph avg</li>
+          <li><%= fastest[4] %> - <%= number_with_precision(fastest[1], :precision => 2) %>mph avg</li>
+          <li><%= fastest[5] %> - <%= number_with_precision(fastest[2], :precision => 2) %>mph avg</li>
         </ol>
       </div>
     </div>

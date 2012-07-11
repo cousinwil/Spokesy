@@ -1,0 +1,11 @@
+<% event = Event.next_event %>
+<% if event %>
+<li class="bullet gray">
+	<strong><%= event.name %> (~<%= event.miles %> Miles)</strong> 
+	<span class="sub"><%= event.description %></span>
+</li>
+<% else %>
+<li class="bullet gray">
+	<strong>NO EVENTS LISTED</strong> 
+</li>
+<% end %>

@@ -49,6 +49,7 @@
   <![endif]--> 
 
   <%= debug(params) if Rails.env.development? -%>
+  <%= debug(current_person) if signed_in? && Rails.env.development? -%>
 </body>
 <!-- we built this city on rock and roll (and http://eeze.us by @cousinwil) -->
 </html>

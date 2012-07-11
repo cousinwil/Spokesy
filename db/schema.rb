@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120707180059) do
+ActiveRecord::Schema.define(:version => 20120711033210) do
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "date"
+    t.integer  "miles"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "members", :force => true do |t|
     t.integer  "strava_id"
@@ -41,9 +50,11 @@ ActiveRecord::Schema.define(:version => 20120707180059) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
+    t.boolean  "admin"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"
+    t.string   "remember_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

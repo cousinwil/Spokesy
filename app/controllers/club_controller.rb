@@ -1,6 +1,6 @@
 class ClubController < ApplicationController
   include StravaHelper
-
+  include SessionsHelper
   def home
     strava_api = StravaApiHelper["www.strava.com"]
     @club_id = 5493

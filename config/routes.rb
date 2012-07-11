@@ -1,12 +1,28 @@
 SpokeGeek::Application.routes.draw do
 
+  get "events/new"
+
+  get "events/index"
+
+  get "events/create"
+
+  get "event/new"
+
+  get "event/index"
+
+  get "event/create"
+
+  get 'sessions/new'
+  
+  resources :events
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'club#home'
   match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
+  match '/sign_in',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

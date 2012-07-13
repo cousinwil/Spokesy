@@ -1,5 +1,5 @@
 class Ride < ActiveRecord::Base
-  attr_accessible :athlete, :commute, :distance, :points, :speed, :vertical, :ride_id, :date, :name
+  attr_accessible :athlete, :commute, :distance, :points, :speed, :vertical, :ride_id, :date, :name, :movingTime
 
   def self.allIds
   	ids = []
@@ -40,14 +40,15 @@ class Ride < ActiveRecord::Base
 
   def self.getAveSpeed(member, date)
     rides = Ride.where('athlete = ? AND date > ?' , member.id, date)
-    total = 0
+    distance = 0
+    time = 0
     num_rides = 0
     for ride in rides
-      num_rides += 1
-      total += ride.speed
+      distance += ride.distance
+      time += ride.movingTime
     end
-    if num_rides > 0
-      return (total/num_rides)*2.2356
+    if distance > 0
+      return (distance/time)*2.2356
     else
       return 0.0
     end
@@ -75,6 +76,7 @@ class Ride < ActiveRecord::Base
         :name => ride['ride']['athlete']['name'], 
         :date => ride['ride']['startDate'], 
         :ride_id => ride['ride']['id'],
+        :movingTime => ride['ride']['movingTime'],
         :athlete => (Member.find_by_strava_id(ride['ride']['athlete']['id'])).id)
       newRide.save
     end

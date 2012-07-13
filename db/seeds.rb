@@ -12,3 +12,9 @@ User.create([
 	  password_confirmation: "foobar",
 	  admin: 'true'
 	}])
+
+Member.create([
+	{
+		user_name: 'Kevin Anderson',
+    strava_id: 14210,
+		}])

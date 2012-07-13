@@ -10,6 +10,7 @@ class CreateRides < ActiveRecord::Migration
       t.string :name
       t.date :date
       t.integer :ride_id
+      t.integer :movingTime
       t.timestamps
     end
   end

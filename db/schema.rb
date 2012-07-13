@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20120711033210) do
     t.string   "name"
     t.date     "date"
     t.integer  "ride_id"
+    t.integer  "movingTime"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -51,10 +52,10 @@ ActiveRecord::Schema.define(:version => 20120711033210) do
     t.string   "name"
     t.string   "email"
     t.boolean  "admin"
+    t.string   "remember_token"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"
-    t.string   "remember_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

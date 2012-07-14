@@ -452,6 +452,12 @@ nav .inline {
   min-height: 600px;
   background-color: #ffffff;
 }
+.smallbold {
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}
 /* media-queries.less - Media Queries for size-specific layouts 
   --------------------------------------------------------------------------- */
 @media only screen and (min-width: 1024px) {

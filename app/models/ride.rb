@@ -63,7 +63,7 @@ class Ride < ActiveRecord::Base
   end
 
   def self.highestAveSpeed(date)
-    #return findHighest(method(:getAveSpeed), date)
+    return findHighest(method(:getAveSpeed), date)
   end
 
   def self.saveNewRides(ride_details)

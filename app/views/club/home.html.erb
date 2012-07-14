@@ -130,16 +130,28 @@
         <img src="/assets/stat-vert.png" class="stat-icon">
         <h3 class="white">This Month</h3>
         <ol class="white">
-          <li><%= ind_vert[3] %> - <%= number_with_precision(ind_vert[0], :precision => 0) %> feet</li>
-          <li><%= ind_vert[4] %> - <%= number_with_precision(ind_vert[1], :precision => 0) %> feet</li>
-          <li><%= ind_vert[5] %> - <%= number_with_precision(ind_vert[2], :precision => 0) %> feet</li>
+          <% unless ind_vert[0] == 0 %>
+          <li><%= ind_vert[3].to_s + ' - ' + number_with_precision(ind_vert[0], :precision => 0).to_s + ' feet'%></li>
+          <% end %>
+          <% unless ind_vert[1] == 0 %>
+          <li><%= ind_vert[4].to_s + ' - ' + number_with_precision(ind_vert[1], :precision => 0).to_s + ' feet' %></li>
+          <% end %>
+          <% unless ind_vert[2] == 0 %>
+          <li><%= ind_vert[5].to_s + ' - ' + number_with_precision(ind_vert[2], :precision => 0).to_s + ' feet' %></li>
+          <% end %>
         </ol>
         <% ind_vert = Ride.highestVert(past_year) %>
         <h3 class="white">All Time</h3>
         <ol class="white">
-          <li><%= ind_vert[3] %> - <%= number_with_precision(ind_vert[0], :precision => 0) %> feet</li>
-          <li><%= ind_vert[4] %> - <%= number_with_precision(ind_vert[1], :precision => 0) %> feet</li>
-          <li><%= ind_vert[5] %> - <%= number_with_precision(ind_vert[2], :precision => 0) %> feet</li>
+          <% unless ind_vert[0] == 0 %>
+          <li><%= ind_vert[3].to_s + ' - ' + number_with_precision(ind_vert[0], :precision => 0).to_s + ' feet'%></li>
+          <% end %>
+          <% unless ind_vert[1] == 0 %>
+          <li><%= ind_vert[4].to_s + ' - ' + number_with_precision(ind_vert[1], :precision => 0).to_s + ' feet' %></li>
+          <% end %>
+          <% unless ind_vert[2] == 0 %>
+          <li><%= ind_vert[5].to_s + ' - ' + number_with_precision(ind_vert[2], :precision => 0).to_s + ' feet' %></li>
+          <% end %>
         </ol>
       </div>
       <div class="threecol">
@@ -148,16 +160,28 @@
         <h3 class="white">This Month</h3>
         <ol class="white">
           <% high_pts = Ride.highestPts(past_month) %>
-          <li><%= high_pts[3] %> - <%= high_pts[0] %> Points</li>
-          <li><%= high_pts[4] %> - <%= high_pts[1] %> Points</li>
-          <li><%= high_pts[5] %> - <%= high_pts[2] %> Points</li>
+          <% unless high_pts[0] == 0 %>
+          <li><%= high_pts[3].to_s + ' - ' + number_with_precision(high_pts[0], :precision => 0).to_s + ' pts'%></li>
+          <% end %>
+          <% unless high_pts[1] == 0 %>
+          <li><%= high_pts[4].to_s + ' - ' + number_with_precision(high_pts[1], :precision => 0).to_s + ' pts' %></li>
+          <% end %>
+          <% unless high_pts[2] == 0 %>
+          <li><%= high_pts[5].to_s + ' - ' + number_with_precision(high_pts[2], :precision => 0).to_s + ' pts' %></li>
+          <% end %>
         </ol>
         <h3 class="white">All Time</h3>
         <ol class="white">
           <% high_pts = Ride.highestPts(past_year) %>
-          <li><%= high_pts[3] %> - <%= high_pts[0] %> Points</li>
-          <li><%= high_pts[4] %> - <%= high_pts[1] %> Points</li>
-          <li><%= high_pts[5] %> - <%= high_pts[2] %> Points</li>
+          <% unless high_pts[0] == 0 %>
+          <li><%= high_pts[3].to_s + ' - ' + number_with_precision(high_pts[0], :precision => 0).to_s + ' pts'%></li>
+          <% end %>
+          <% unless high_pts[1] == 0 %>
+          <li><%= high_pts[4].to_s + ' - ' + number_with_precision(high_pts[1], :precision => 0).to_s + ' pts' %></li>
+          <% end %>
+          <% unless high_pts[2] == 0 %>
+          <li><%= high_pts[5].to_s + ' - ' + number_with_precision(high_pts[2], :precision => 0).to_s + ' pts' %></li>
+          <% end %>
         </ol> 
       </div>
       <div class="threecol last">
@@ -166,16 +190,28 @@
         <h3 class="white">This Month</h3>
         <ol class="white">
           <% fastest = Ride.highestAveSpeed(past_month) %>
-          <li><%= fastest[3] %> - <%= number_with_precision(fastest[0], :precision => 2) %>mph avg</li>
-          <li><%= fastest[4] %> - <%= number_with_precision(fastest[1], :precision => 2) %>mph avg</li>
-          <li><%= fastest[5] %> - <%= number_with_precision(fastest[2], :precision => 2) %>mph avg</li>
+          <% unless fastest[0] == 0 %>
+          <li><%= fastest[3].to_s + ' - ' + number_with_precision(fastest[0], :precision => 0).to_s + ' mph avg'%></li>
+          <% end %>
+          <% unless fastest[1] == 0 %>
+          <li><%= fastest[4].to_s + ' - ' + number_with_precision(fastest[1], :precision => 0).to_s + ' mph avg' %></li>
+          <% end %>
+          <% unless fastest[2] == 0 %>
+          <li><%= fastest[5].to_s + ' - ' + number_with_precision(fastest[2], :precision => 0).to_s + ' mph avg' %></li>
+          <% end %>
         </ol>
         <h3 class="white">All Time</h3>
         <ol class="white">
           <% fastest = Ride.highestAveSpeed(past_year) %>
-          <li><%= fastest[3] %> - <%= number_with_precision(fastest[0], :precision => 2) %>mph avg</li>
-          <li><%= fastest[4] %> - <%= number_with_precision(fastest[1], :precision => 2) %>mph avg</li>
-          <li><%= fastest[5] %> - <%= number_with_precision(fastest[2], :precision => 2) %>mph avg</li>
+          <% unless fastest[0] == 0 %>
+          <li><%= fastest[3].to_s + ' - ' + number_with_precision(fastest[0], :precision => 0).to_s + ' mph avg'%></li>
+          <% end %>
+          <% unless fastest[1] == 0 %>
+          <li><%= fastest[4].to_s + ' - ' + number_with_precision(fastest[1], :precision => 0).to_s + ' mph avg' %></li>
+          <% end %>
+          <% unless fastest[2] == 0 %>
+          <li><%= fastest[5].to_s + ' - ' + number_with_precision(fastest[2], :precision => 0).to_s + ' mph avg' %></li>
+          <% end %>
         </ol>
       </div>
     </div>

@@ -155,7 +155,7 @@
         </ol>
       </div>
       <div class="threecol">
-        <h2 class="white">Most Points*</h2>
+        <h2 class="white">Score <small>(1 Mile or 100 ft vertical = 1 pt)</small></h2>
         <img src="/assets/stat-points.png" class="stat-icon">
         <h3 class="white">This Month</h3>
         <ol class="white">
@@ -185,32 +185,32 @@
         </ol> 
       </div>
       <div class="threecol last">
-        <h2 class="white">Fastest</h2>
+        <h2 class="white">Fastest <small>(average mph)</small></h2>
         <img src="/assets/stat-fastest.png" class="stat-icon">
         <h3 class="white">This Month</h3>
         <ol class="white">
           <% fastest = Ride.highestAveSpeed(past_month) %>
           <% unless fastest[0] == 0 %>
-          <li><%= fastest[3].to_s + ' - ' + number_with_precision(fastest[0], :precision => 0).to_s + ' mph avg'%></li>
+          <li><%= fastest[3].to_s + ' - ' + number_with_precision(fastest[0], :precision => 1).to_s + ' mph'%></li>
           <% end %>
           <% unless fastest[1] == 0 %>
-          <li><%= fastest[4].to_s + ' - ' + number_with_precision(fastest[1], :precision => 0).to_s + ' mph avg' %></li>
+          <li><%= fastest[4].to_s + ' - ' + number_with_precision(fastest[1], :precision => 1).to_s + ' mph' %></li>
           <% end %>
           <% unless fastest[2] == 0 %>
-          <li><%= fastest[5].to_s + ' - ' + number_with_precision(fastest[2], :precision => 0).to_s + ' mph avg' %></li>
+          <li><%= fastest[5].to_s + ' - ' + number_with_precision(fastest[2], :precision => 1).to_s + ' mph' %></li>
           <% end %>
         </ol>
         <h3 class="white">All Time</h3>
         <ol class="white">
           <% fastest = Ride.highestAveSpeed(past_year) %>
           <% unless fastest[0] == 0 %>
-          <li><%= fastest[3].to_s + ' - ' + number_with_precision(fastest[0], :precision => 0).to_s + ' mph avg'%></li>
+          <li><%= fastest[3].to_s + ' - ' + number_with_precision(fastest[0], :precision => 1).to_s + ' mph'%></li>
           <% end %>
           <% unless fastest[1] == 0 %>
-          <li><%= fastest[4].to_s + ' - ' + number_with_precision(fastest[1], :precision => 0).to_s + ' mph avg' %></li>
+          <li><%= fastest[4].to_s + ' - ' + number_with_precision(fastest[1], :precision => 1).to_s + ' mph' %></li>
           <% end %>
           <% unless fastest[2] == 0 %>
-          <li><%= fastest[5].to_s + ' - ' + number_with_precision(fastest[2], :precision => 0).to_s + ' mph avg' %></li>
+          <li><%= fastest[5].to_s + ' - ' + number_with_precision(fastest[2], :precision => 1).to_s + ' mph' %></li>
           <% end %>
         </ol>
       </div>
@@ -218,7 +218,7 @@
     <div class="row">
       <div class="sixcol">&nbsp;</div>
       <div class="sixcol last">
-        <p class="white footnote"><strong>*Points: 1 Mile or 100 Vertical feet per point</strong></p>
+        <p class="white footnote"><strong>* Points: 1 Mile or 100 Vertical feet per point</strong></p>
       </div>
     </div>
     </div>

@@ -7,11 +7,13 @@
         </div>
       </div>
       <div class="sixcol last">
+        <% if params[:controller].to_s == 'club' && params[:action].to_s == 'home' %>
         <ul class="nav-list clearfix">
           <li class="left"><a href="#info" class="white red-hover"><span class="bg-red nav-circle"></span> Club Info</a></li>
           <li class="left"><a href="#merch" class="white white-hover"><span class="bg-white nav-circle"></span> Merchandise</a></li>
           <li class="left"><a href="#stats" class="white blue-hover"><span class="bg-blue nav-circle"></span> Leaderboards</a></li>
         </ul>
+        <% end %>
       </div>
     </div>
   </div>

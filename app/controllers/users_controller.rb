@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_filter :admin_required # Just for now while users aren't supported
+
   def new
   	@title = 'Sign Up'
   	@user = User.new(params[:user])

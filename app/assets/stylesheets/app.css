@@ -154,7 +154,7 @@ form {
 /* application.less - Base Global CSS
   --------------------------------------------------------------------------- */
 body {
-  background-color: #ffffff;
+  background-color: #454545;
   color: #454545;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -446,6 +446,11 @@ nav .inline {
 }
 .founder-quote {
   font-family: 'Trocchi', 'Georgia', serif;
+}
+.full-page {
+  padding-top: 140px;
+  min-height: 600px;
+  background-color: #ffffff;
 }
 /* media-queries.less - Media Queries for size-specific layouts 
   --------------------------------------------------------------------------- */

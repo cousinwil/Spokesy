@@ -1,6 +1,7 @@
 class ClubController < ApplicationController
+
   include StravaHelper
-  include SessionsHelper
+
   def home
     strava_api = StravaApiHelper["www.strava.com"]
     @club_id = 5493
@@ -25,5 +26,12 @@ class ClubController < ApplicationController
 
       Ride.saveNewRides(ride_details)
     end
+    
+    def confirmed
+    end
+
+    def thanks
+    end
+
   end
 end

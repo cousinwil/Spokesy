@@ -12,11 +12,11 @@
   
   <!-- og: == 'Open Graph Protocol' - Makes you Facebook "Like" Button & Sharing Friendly -->
   <meta name="title" content="Spoke Geek Bicycle Club" property="og:title" />
-  <meta name="" content="" property="og:type" />
+  <meta name="" content="website" property="og:type" />
   <meta name="" content="http://spokegeek.com/" property="og:url" />
-  <meta name="" content="" property="og:image" />
+  <meta name="" content="http://" property="og:image" />
   <meta name="" content="Spoke Geek Bicycle Club" property="og:site_name" />
-  <meta name="" content="" property="fb:admins" />
+  <meta name="" content="cousinwil" property="fb:admins" />
   <meta name="description" content="The Spoke Geek Bicycle Club is a casual bike club which promotes cycling as part of a healtier, more stress-free, start-up lifestyle. Everyone is free to join us on our group rides and on Strava." property="og:description" />
   <meta name="copyright" content="Wil Everts, 2012 All Rights Reserved" />
   <meta name="author" content="Wil Everts" />
@@ -48,8 +48,8 @@
     <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
   <![endif]--> 
 
-  <%= debug(params) if Rails.env.development? -%>
-  <%= debug(current_person) if signed_in? && Rails.env.development? -%>
+  <%#= debug(params) if Rails.env.development? -%>
+  <%#= debug(current_person) if signed_in? && Rails.env.development? -%>
 </body>
 <!-- we built this city on rock and roll (and http://eeze.us by @cousinwil) -->
 </html>

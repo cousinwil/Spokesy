@@ -65,12 +65,12 @@
     <div class="row">
       <div class="fourcol">
         <h2>2012 Club Jersey<br><span class="sub-text">Custom Designed Capo Corsa Jersey</span></h2>
-        <p>The Spoke Geek inagural cycling jersey was designed by Wil Everts using the popular Capo Corsa Jersey. Only the first 49 to reserve will get the special &ldquo;First 49&rdquo; version of the jersey and a &ldquo;First 49&rdquo; badge on their profile! After that this text will be replaced by &ldquo;2012&rdquo; on the jersey.</p> 
+        <p>The Spoke Geek inagural cycling jersey was designed by @cousinwil using the popular Capo Corsa Jersey. Only the first 49 to reserve will get the special &ldquo;First 49&rdquo; version of the jersey and a &ldquo;First 49&rdquo; badge on their profile! After that this text will be replaced by &ldquo;2012&rdquo;.</p> 
 
-        <h3>OMG!! Reserve Yours Now!</h3>
-        <p>Reserve your <strong>first-year</strong> Spoke Geek jersey for only $89 and rep hard-core for life, bro! Jerseys will be ordered on June 1st, but you can ensure we have one in your size by reserving your&rsquo;s beforehand! USPS Shipping included (within the Continental US only). All sizes are Men&rsquo;s.</p>
+        <h3>Coming Soon!</h3>
+        <p>We'll let you know when you can reserve your <strong>first-year</strong> Spoke Geek jersey on the club mailing list! Make sure you're signed up!</p>
 
-        <form>
+        <form style="display:none;">
           <ul class="buy-now clearfix">
             <li class="price red">$89</li>
             <li>
@@ -130,59 +130,95 @@
         <img src="/assets/stat-vert.png" class="stat-icon">
         <h3 class="white">This Month</h3>
         <ol class="white">
-          <li><%= ind_vert[3] %> - <%= number_with_precision(ind_vert[0], :precision => 0) %> feet</li>
-          <li><%= ind_vert[4] %> - <%= number_with_precision(ind_vert[1], :precision => 0) %> feet</li>
-          <li><%= ind_vert[5] %> - <%= number_with_precision(ind_vert[2], :precision => 0) %> feet</li>
+          <% unless ind_vert[0] == 0 %>
+          <li><%= ind_vert[3].to_s + ' - ' + number_with_precision(ind_vert[0], :precision => 0).to_s + ' feet'%></li>
+          <% end %>
+          <% unless ind_vert[1] == 0 %>
+          <li><%= ind_vert[4].to_s + ' - ' + number_with_precision(ind_vert[1], :precision => 0).to_s + ' feet' %></li>
+          <% end %>
+          <% unless ind_vert[2] == 0 %>
+          <li><%= ind_vert[5].to_s + ' - ' + number_with_precision(ind_vert[2], :precision => 0).to_s + ' feet' %></li>
+          <% end %>
         </ol>
         <% ind_vert = Ride.highestVert(past_year) %>
         <h3 class="white">All Time</h3>
         <ol class="white">
-          <li><%= ind_vert[3] %> - <%= number_with_precision(ind_vert[0], :precision => 0) %> feet</li>
-          <li><%= ind_vert[4] %> - <%= number_with_precision(ind_vert[1], :precision => 0) %> feet</li>
-          <li><%= ind_vert[5] %> - <%= number_with_precision(ind_vert[2], :precision => 0) %> feet</li>
+          <% unless ind_vert[0] == 0 %>
+          <li><%= ind_vert[3].to_s + ' - ' + number_with_precision(ind_vert[0], :precision => 0).to_s + ' feet'%></li>
+          <% end %>
+          <% unless ind_vert[1] == 0 %>
+          <li><%= ind_vert[4].to_s + ' - ' + number_with_precision(ind_vert[1], :precision => 0).to_s + ' feet' %></li>
+          <% end %>
+          <% unless ind_vert[2] == 0 %>
+          <li><%= ind_vert[5].to_s + ' - ' + number_with_precision(ind_vert[2], :precision => 0).to_s + ' feet' %></li>
+          <% end %>
         </ol>
       </div>
       <div class="threecol">
-        <h2 class="white">Most Points*</h2>
+        <h2 class="white">Score <small>(1 Mile or 100 ft vertical = 1 pt)</small></h2>
         <img src="/assets/stat-points.png" class="stat-icon">
         <h3 class="white">This Month</h3>
         <ol class="white">
           <% high_pts = Ride.highestPts(past_month) %>
-          <li><%= high_pts[3] %> - <%= high_pts[0] %> Points</li>
-          <li><%= high_pts[4] %> - <%= high_pts[1] %> Points</li>
-          <li><%= high_pts[5] %> - <%= high_pts[2] %> Points</li>
+          <% unless high_pts[0] == 0 %>
+          <li><%= high_pts[3].to_s + ' - ' + number_with_precision(high_pts[0], :precision => 0).to_s + ' pts'%></li>
+          <% end %>
+          <% unless high_pts[1] == 0 %>
+          <li><%= high_pts[4].to_s + ' - ' + number_with_precision(high_pts[1], :precision => 0).to_s + ' pts' %></li>
+          <% end %>
+          <% unless high_pts[2] == 0 %>
+          <li><%= high_pts[5].to_s + ' - ' + number_with_precision(high_pts[2], :precision => 0).to_s + ' pts' %></li>
+          <% end %>
         </ol>
         <h3 class="white">All Time</h3>
         <ol class="white">
           <% high_pts = Ride.highestPts(past_year) %>
-          <li><%= high_pts[3] %> - <%= high_pts[0] %> Points</li>
-          <li><%= high_pts[4] %> - <%= high_pts[1] %> Points</li>
-          <li><%= high_pts[5] %> - <%= high_pts[2] %> Points</li>
+          <% unless high_pts[0] == 0 %>
+          <li><%= high_pts[3].to_s + ' - ' + number_with_precision(high_pts[0], :precision => 0).to_s + ' pts'%></li>
+          <% end %>
+          <% unless high_pts[1] == 0 %>
+          <li><%= high_pts[4].to_s + ' - ' + number_with_precision(high_pts[1], :precision => 0).to_s + ' pts' %></li>
+          <% end %>
+          <% unless high_pts[2] == 0 %>
+          <li><%= high_pts[5].to_s + ' - ' + number_with_precision(high_pts[2], :precision => 0).to_s + ' pts' %></li>
+          <% end %>
         </ol> 
       </div>
       <div class="threecol last">
-        <h2 class="white">Fastest</h2>
+        <h2 class="white">Fastest <small>(average mph)</small></h2>
         <img src="/assets/stat-fastest.png" class="stat-icon">
         <h3 class="white">This Month</h3>
         <ol class="white">
           <% fastest = Ride.highestAveSpeed(past_month) %>
-          <li><%= fastest[3] %> - <%= number_with_precision(fastest[0], :precision => 2) %>mph avg</li>
-          <li><%= fastest[4] %> - <%= number_with_precision(fastest[1], :precision => 2) %>mph avg</li>
-          <li><%= fastest[5] %> - <%= number_with_precision(fastest[2], :precision => 2) %>mph avg</li>
+          <% unless fastest[0] == 0 %>
+          <li><%= fastest[3].to_s + ' - ' + number_with_precision(fastest[0], :precision => 1).to_s + ' mph'%></li>
+          <% end %>
+          <% unless fastest[1] == 0 %>
+          <li><%= fastest[4].to_s + ' - ' + number_with_precision(fastest[1], :precision => 1).to_s + ' mph' %></li>
+          <% end %>
+          <% unless fastest[2] == 0 %>
+          <li><%= fastest[5].to_s + ' - ' + number_with_precision(fastest[2], :precision => 1).to_s + ' mph' %></li>
+          <% end %>
         </ol>
         <h3 class="white">All Time</h3>
         <ol class="white">
           <% fastest = Ride.highestAveSpeed(past_year) %>
-          <li><%= fastest[3] %> - <%= number_with_precision(fastest[0], :precision => 2) %>mph avg</li>
-          <li><%= fastest[4] %> - <%= number_with_precision(fastest[1], :precision => 2) %>mph avg</li>
-          <li><%= fastest[5] %> - <%= number_with_precision(fastest[2], :precision => 2) %>mph avg</li>
+          <% unless fastest[0] == 0 %>
+          <li><%= fastest[3].to_s + ' - ' + number_with_precision(fastest[0], :precision => 1).to_s + ' mph'%></li>
+          <% end %>
+          <% unless fastest[1] == 0 %>
+          <li><%= fastest[4].to_s + ' - ' + number_with_precision(fastest[1], :precision => 1).to_s + ' mph' %></li>
+          <% end %>
+          <% unless fastest[2] == 0 %>
+          <li><%= fastest[5].to_s + ' - ' + number_with_precision(fastest[2], :precision => 1).to_s + ' mph' %></li>
+          <% end %>
         </ol>
       </div>
     </div>
     <div class="row">
       <div class="sixcol">&nbsp;</div>
       <div class="sixcol last">
-        <p class="white footnote"><strong>*Points: 1 Mile or 100 Vertical feet per point</strong></p>
+        <p class="white footnote"><strong>* Points: 1 Mile or 100 Vertical feet per point</strong></p>
       </div>
     </div>
     </div>

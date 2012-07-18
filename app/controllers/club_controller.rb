@@ -1,8 +1,18 @@
 class ClubController < ApplicationController
-  include StravaHelper
-  include SessionsHelper
   include ClubHelper
 
+
   def home
+    findRides
+  end
+    
+  def confirmed
+  end
+
+  def thanks
+  end
+
+  def deliver
+    Delayed::Job.enqueue(RideJob.new())
   end
 end

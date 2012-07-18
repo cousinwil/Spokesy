@@ -1,4 +1,6 @@
 module ClubHelper
+  include StravaHelper
+  include SessionsHelper
 
 #Data returned as follows
 #data[0] = total miles

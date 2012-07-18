@@ -107,6 +107,5 @@ class Ride < ActiveRecord::Base
         highest[5] = member.user_name
       end
     end
-    return highest
   end
 end

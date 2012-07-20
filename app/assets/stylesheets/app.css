@@ -42,6 +42,12 @@ nav h1 {
 p {
   margin-bottom: 14px;
 }
+a {
+  color: #f93333;
+}
+a:hover {
+  color: #5cb3d1;
+}
 .red,
 .error {
   color: #f93333;

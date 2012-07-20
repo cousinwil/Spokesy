@@ -1,5 +1,6 @@
 class Ride < ActiveRecord::Base
   attr_accessible :athlete, :commute, :distance, :points, :speed, :vertical, :ride_id, :date, :name, :movingTime
+  include ClubHelper
 
   def self.allIds
   	ids = []
@@ -106,6 +107,33 @@ class Ride < ActiveRecord::Base
         highest[2] = amount
         highest[5] = member.user_name
       end
+    end
+    return highest
+  end
+
+  def self.findRides
+    strava_api = StravaApiHelper["www.strava.com"]
+    @club_id = GlobalData.find(:first, :conditions => ['name = ?', 'club_id']).value
+
+    Member.get_members(@club_id, strava_api)
+
+    idList = Ride.allIds
+    for member in Member.all
+      usefulIds = []
+      rides = strava_api.get("rides", :athleteId=>member.strava_id, :startDate=>Date.today - 365, :endDate=>Date.today + 1)
+      for ride in rides['rides']
+        puts 'ID:' + ride['id'].to_s + 'NAME: ' + member.user_name
+        if !(idList.include? ride['id'])
+          puts 'TRUE'
+          usefulIds.push(ride['id'].to_s)
+        else
+          puts 'FALSE'
+        end
+      end
+
+      ride_details = usefulIds.map{|id| strava_api.get("rides/#{id}")} 
+
+      Ride.saveNewRides(ride_details)
     end
   end
 end

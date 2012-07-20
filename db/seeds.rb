@@ -18,3 +18,12 @@ Member.create([
 		user_name: 'Kevin Anderson',
     strava_id: 14210,
 		}])
+GlobalData.create([
+	{
+		name: 'club_id',
+    value: '5493'
+	},
+  {
+    name: 'twitter',
+    value: 'SpokeGeek'
+  }])

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120716184022) do
+ActiveRecord::Schema.define(:version => 20120719073242) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(:version => 20120716184022) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "global_data", :force => true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "members", :force => true do |t|
     t.integer  "strava_id"
     t.string   "user_name"
@@ -60,6 +67,13 @@ ActiveRecord::Schema.define(:version => 20120716184022) do
     t.date     "date"
     t.integer  "ride_id"
     t.integer  "movingTime"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tweets", :force => true do |t|
+    t.string   "body"
+    t.string   "tweet"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

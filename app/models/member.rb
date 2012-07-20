@@ -27,7 +27,7 @@ class Member < ActiveRecord::Base
     member_details['members'].each do |member|
       athlete_name = member['name'].to_s
       athlete_id = member['id'].to_i
-
+      puts 'NAME: ' + member['name'].to_s
       member = Member.find(:first, :conditions => ["strava_id='#{athlete_id}'"])
       unless member
         Member.create([{ user_name: athlete_name.to_s, strava_id: athlete_id.to_i}])

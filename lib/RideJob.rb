@@ -1,8 +1,8 @@
-class RideJob < Struct.new()
-include ClubHelper
+class RideJob
+#include "#{Rails.root.to_s}"/app/helpers/ClubHelper
 
 	def perform
-		Ride.new.findRides
-		Delayed::Job.enqueue(RideJob.new, 0, 2.hours_from_now)
+		Ride.findRides
+		Delayed::Job.enqueue(TweetJob.new(), 0, 15.minutes.from_now)
 	end
 end

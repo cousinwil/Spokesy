@@ -1,5 +1,9 @@
 SpokeGeek::Application.routes.draw do
   
+  get "members/show"
+
+  get "members/index"
+
   resources :events
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
@@ -10,6 +14,7 @@ SpokeGeek::Application.routes.draw do
   match '/signup',     to: 'users#new'
   match '/sign_in',    to: 'sessions#new'
   match '/signout',    to: 'sessions#destroy', via: :delete
+  match '/members/:id', to: 'members#show'
 
 
   # The priority is based upon order of creation:

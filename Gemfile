@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'delayed_job_active_record'
+gem 'twitter'
 gem 'json'
 
 group :development, :test do

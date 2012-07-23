@@ -5,6 +5,8 @@ class ClubController < ApplicationController
   	if Delayed::Job.all.empty?
   		Delayed::Job.enqueue(RideJob.new, 0, 15.minutes.from_now)
   	end
+
+    @tweets = Tweet.find(:all)
   end
     
   def confirmed

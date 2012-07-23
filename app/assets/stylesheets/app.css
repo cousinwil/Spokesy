@@ -467,6 +467,10 @@ nav .inline {
   font-weight: bold;
   text-align: center;
 }
+.next {
+  margin-top: 40px;
+  text-align: center;
+}
 /* media-queries.less - Media Queries for size-specific layouts 
   --------------------------------------------------------------------------- */
 @media only screen and (min-width: 1024px) {

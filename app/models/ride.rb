@@ -69,7 +69,6 @@ class Ride < ActiveRecord::Base
 
   def self.saveNewRides(ride_details)
     ride_details.each do |ride|
-      puts 'ELEVATION: ' + ride['ride']['elevationGain'].to_s + ' FEET'
       newRide = Ride.new(:commute => ride['ride']['commute'], 
         :distance => ride['ride']['distance'].to_f,
         :speed => ride['ride']['averageSpeed'].to_f,
@@ -122,12 +121,8 @@ class Ride < ActiveRecord::Base
       usefulIds = []
       rides = strava_api.get("rides", :athleteId=>member.strava_id, :startDate=>Date.today - 365, :endDate=>Date.today + 1)
       for ride in rides['rides']
-        puts 'ID:' + ride['id'].to_s + 'NAME: ' + member.user_name
         if !(idList.include? ride['id'])
-          puts 'TRUE'
           usefulIds.push(ride['id'].to_s)
-        else
-          puts 'FALSE'
         end
       end
 

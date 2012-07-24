@@ -3,7 +3,7 @@ class ClubController < ApplicationController
 
   def home
   	if Delayed::Job.all.empty?
-  		Delayed::Job.enqueue(RideJob.new, 0, 15.minutes.from_now)
+  		Delayed::Job.enqueue(RideJob.new)
   	end
   end
     

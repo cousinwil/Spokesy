@@ -6,9 +6,7 @@ class Event < ActiveRecord::Base
     correct_date = Date.today + 10000
     correct_event = Event.first
   	if events
-      puts 'HERE'
   		events.each do |event|
-        puts 'DATE: ' + event.date.to_s + 'CORRECT DATE: ' + correct_date.to_s
   			if ((event.date >= Date.today) && (event.date < correct_date))
           correct_date = event.date
           correct_event = event

@@ -1,4 +1,4 @@
-<article class="main banner">
+<article class="main banner two">
     <div class="row">
       <div class="sixcol">
       </div>
@@ -6,9 +6,8 @@
         <div class="quote-container">
           <h1 class="red">Are you a Spoke Geek?</h1>
           
-          <p class="gray">Spoke Geek is a casual bike club which promotes cycling as part of a healtier, more stress-free, start-up lifestyle. Everyone is free to join us on our group rides and on Strava.</p> 
-          <p class="founder-quote gray">&ldquo;I guarantee it&rsquo;ll make you smile to go out and ride your bike! You might even enjoy it so much that you forget how good it is for you.&rdquo; - Wil Everts, SG Founder</p>
-          <p class="gray">Sign up below to get ride and event alerts via email (<em>we promise not to spam you or sell your information</em>.)</p>
+          <p class="founder-quote gray">&ldquo;Riding is great for getting the heart rate up, exploring new places, chatting with friends... It&rsquo;s like golf. Except it&rsquo;s a workout and I know how to ride a bike.&rdquo; - Wil Everts, Club Founder</p>
+          <p class="gray">Spoke Geek is a casual cycling club for SF start-up geeks and friends. All are welcome to join our group rides and Strava. Sign up below to receive the Strava Club password and monthly ride alerts via email (<em>we promise not to spam you or sell your information</em>.)</p>
 
           <div class="mailchimp">
             <form action="http://powderenvy.us2.list-manage.com/subscribe/post?u=9455618a19fa33f9c97d56019&amp;id=a3cbfa7871" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
@@ -23,14 +22,16 @@
           <h3 class="gray">Next Group Ride:</h3>
 
           <ul class="orgs ribbon">
-            <li class="bullet gray hide"><strong>Saturday Spandex (~40-60 Miles)</strong><br>Meets every first and third Saturday at 10am in front of the Ferry Building.</li>
             <%= render :partial => 'common/event_list' %>
-            <!--<li class="bullet gray"><strong>Critical Lunch (~22 Miles)</strong> <span class="sub">Meets the last Friday of the month at 12:15pm in front of the Ferry Building. Come join us for a quick butter lap and get those pasty engineer&rsquo;s legs some sun!</span></li>-->
+
           </ul>
         </div>
 
-        <div class="attribution">
+        <div class="attribution one">
           <p>Photo Attribution: <a href="http://creativecommons.org/licenses/by-nc-nd/2.0/" class="white">Some rights reserved</a> by <a href="http://www.flickr.com/photos/everywhereatonce/" class="white">everywhereATonce</a>.</p>
+        </div>
+        <div class="attribution two">
+          <p>Photo Attribution: <a href="http://creativecommons.org/licenses/by/2.0/" class="white">Some rights reserved</a> by <a href="http://www.flickr.com/photos/kentgoldman/" class="white">kentgoldman</a>.</p>
         </div>
       </div>
     </div>
@@ -51,7 +52,7 @@
           <li class="bullet"><strong>SF Bicycle Coalition</strong> to help them continue to advocate for our rights as cycists.</li>
           <li class="bullet"><strong>Electronic Frontier Foundation</strong> to help them continue to advocate for our rights as technologists.</li>
         </ul>
-        <p>For information, sponsorships, partnerships, press, and questions please email <a href="mailto:spokes@luckynerds.com" class="yellow">spokes@luckynerds.com</a>
+        <p>For information, sponsorships, partnerships, press, and questions please email <a href="mailto:your@cousinwil.com" class="yellow">your@cousinwil.com</a>
       </div>
 
     </div>
@@ -114,13 +115,6 @@
           <li>Commute Miles <%= number_with_precision(data[1], :precision => 1) if data[1] %></li>
           <li>Longest Ride <%= number_with_precision(data[2], :precision => 1) if data[2] %> <%= '(' + data[3].to_s + ')' if data[3] %></li>
         </ol>
-        <h3 class="white">All Time</h3>
-        <ol class="white">
-          <% data = getData(Ride.all) %>
-          <li>Total Miles - <%= number_with_precision(data[0], :precision => 1) if data[0] %></li>
-          <li>Commute Miles - <%= number_with_precision(data[1], :precision => 1) if data[1] %></li>
-          <li>Longest Ride - <%= number_with_precision(data[2], :precision => 1) if data[2] %></li><%= '(' + data[3].to_s + ')' if data[3] %>
-        </ol>
       </div>
       <div class="threecol">
         <h2 class="white">Most Vertical</h2>
@@ -131,94 +125,116 @@
         <h3 class="white">This Month</h3>
         <ol class="white">
           <% unless ind_vert[0] == 0 %>
-          <li><%= ind_vert[3].to_s + ' - ' + number_with_precision(ind_vert[0], :precision => 0).to_s + ' feet'%></li>
+          <li><%= ind_vert[3].to_s + ' - ' + number_with_delimiter(number_with_precision(ind_vert[0], :precision => 0)).to_s + ' feet'%></li>
           <% end %>
           <% unless ind_vert[1] == 0 %>
-          <li><%= ind_vert[4].to_s + ' - ' + number_with_precision(ind_vert[1], :precision => 0).to_s + ' feet' %></li>
+          <li><%= ind_vert[4].to_s + ' - ' + number_with_delimiter(number_with_precision(ind_vert[1], :precision => 0)).to_s + ' feet' %></li>
           <% end %>
           <% unless ind_vert[2] == 0 %>
-          <li><%= ind_vert[5].to_s + ' - ' + number_with_precision(ind_vert[2], :precision => 0).to_s + ' feet' %></li>
-          <% end %>
-        </ol>
-        <% ind_vert = Ride.highestVert(past_year) %>
-        <h3 class="white">All Time</h3>
-        <ol class="white">
-          <% unless ind_vert[0] == 0 %>
-          <li><%= ind_vert[3].to_s + ' - ' + number_with_precision(ind_vert[0], :precision => 0).to_s + ' feet'%></li>
-          <% end %>
-          <% unless ind_vert[1] == 0 %>
-          <li><%= ind_vert[4].to_s + ' - ' + number_with_precision(ind_vert[1], :precision => 0).to_s + ' feet' %></li>
-          <% end %>
-          <% unless ind_vert[2] == 0 %>
-          <li><%= ind_vert[5].to_s + ' - ' + number_with_precision(ind_vert[2], :precision => 0).to_s + ' feet' %></li>
+          <li><%= ind_vert[5].to_s + ' - ' + number_with_delimiter(number_with_precision(ind_vert[2], :precision => 0)).to_s + ' feet' %></li>
           <% end %>
         </ol>
       </div>
       <div class="threecol">
-        <h2 class="white">Score <small>(1 Mile or 100 ft vertical = 1 pt)</small></h2>
+        <h2 class="white">Score*</h2>
         <img src="/assets/stat-points.png" class="stat-icon">
         <h3 class="white">This Month</h3>
         <ol class="white">
           <% high_pts = Ride.highestPts(past_month) %>
           <% unless high_pts[0] == 0 %>
-          <li><%= high_pts[3].to_s + ' - ' + number_with_precision(high_pts[0], :precision => 0).to_s + ' pts'%></li>
+          <li><%= high_pts[3].to_s + ' - ' + number_with_delimiter(number_with_precision(high_pts[0], :precision => 0)).to_s + ' pts'%></li>
           <% end %>
           <% unless high_pts[1] == 0 %>
-          <li><%= high_pts[4].to_s + ' - ' + number_with_precision(high_pts[1], :precision => 0).to_s + ' pts' %></li>
+          <li><%= high_pts[4].to_s + ' - ' + number_with_delimiter(number_with_precision(high_pts[1], :precision => 0)).to_s + ' pts' %></li>
           <% end %>
           <% unless high_pts[2] == 0 %>
-          <li><%= high_pts[5].to_s + ' - ' + number_with_precision(high_pts[2], :precision => 0).to_s + ' pts' %></li>
+          <li><%= high_pts[5].to_s + ' - ' + number_with_delimiter(number_with_precision(high_pts[2], :precision => 0)).to_s + ' pts' %></li>
           <% end %>
         </ol>
-        <h3 class="white">All Time</h3>
-        <ol class="white">
-          <% high_pts = Ride.highestPts(past_year) %>
-          <% unless high_pts[0] == 0 %>
-          <li><%= high_pts[3].to_s + ' - ' + number_with_precision(high_pts[0], :precision => 0).to_s + ' pts'%></li>
-          <% end %>
-          <% unless high_pts[1] == 0 %>
-          <li><%= high_pts[4].to_s + ' - ' + number_with_precision(high_pts[1], :precision => 0).to_s + ' pts' %></li>
-          <% end %>
-          <% unless high_pts[2] == 0 %>
-          <li><%= high_pts[5].to_s + ' - ' + number_with_precision(high_pts[2], :precision => 0).to_s + ' pts' %></li>
-          <% end %>
-        </ol> 
       </div>
       <div class="threecol last">
-        <h2 class="white">Fastest <small>(average mph)</small></h2>
+        <h2 class="white">Fastest**</h2>
         <img src="/assets/stat-fastest.png" class="stat-icon">
         <h3 class="white">This Month</h3>
         <ol class="white">
           <% fastest = Ride.highestAveSpeed(past_month) %>
           <% unless fastest[0] == 0 %>
-          <li><%= fastest[3].to_s + ' - ' + number_with_precision(fastest[0], :precision => 1).to_s + ' mph'%></li>
+          <li><%= fastest[3].to_s + ' - ' + number_with_delimiter(number_with_precision(fastest[0], :precision => 1)).to_s + ' mph'%></li>
           <% end %>
           <% unless fastest[1] == 0 %>
-          <li><%= fastest[4].to_s + ' - ' + number_with_precision(fastest[1], :precision => 1).to_s + ' mph' %></li>
+          <li><%= fastest[4].to_s + ' - ' + number_with_delimiter(number_with_precision(fastest[1], :precision => 1)).to_s + ' mph' %></li>
           <% end %>
           <% unless fastest[2] == 0 %>
-          <li><%= fastest[5].to_s + ' - ' + number_with_precision(fastest[2], :precision => 1).to_s + ' mph' %></li>
-          <% end %>
-        </ol>
-        <h3 class="white">All Time</h3>
-        <ol class="white">
-          <% fastest = Ride.highestAveSpeed(past_year) %>
-          <% unless fastest[0] == 0 %>
-          <li><%= fastest[3].to_s + ' - ' + number_with_precision(fastest[0], :precision => 1).to_s + ' mph'%></li>
-          <% end %>
-          <% unless fastest[1] == 0 %>
-          <li><%= fastest[4].to_s + ' - ' + number_with_precision(fastest[1], :precision => 1).to_s + ' mph' %></li>
-          <% end %>
-          <% unless fastest[2] == 0 %>
-          <li><%= fastest[5].to_s + ' - ' + number_with_precision(fastest[2], :precision => 1).to_s + ' mph' %></li>
+          <li><%= fastest[5].to_s + ' - ' + number_with_delimiter(number_with_precision(fastest[2], :precision => 1)).to_s + ' mph' %></li>
           <% end %>
         </ol>
       </div>
     </div>
     <div class="row">
+      <div class="twelvecol">
+      <div class="threecol">
+        <h3 class="white">All Time</h3>
+        <ol class="white">
+          <% data = getData(Ride.all) %>
+          <li>Total Miles - <%= number_with_precision(data[0], :precision => 1) if data[0] %></li>
+          <li>Commute Miles - <%= number_with_precision(data[1], :precision => 1) if data[1] %></li>
+          <li>Longest Ride - <%= number_with_precision(data[2], :precision => 1) if data[2] %></li><%= '(' + data[3].to_s + ')' if data[3] %>
+        </ol>
+      </div>
+      <div class="threecol">
+        <% ind_vert = Ride.highestVert(past_year) %>
+        <h3 class="white">All Time</h3>
+        <ol class="white">
+          <% unless ind_vert[0] == 0 %>
+          <li><%= ind_vert[3].to_s + ' - ' + number_with_delimiter(number_with_precision(ind_vert[0], :precision => 0)).to_s + ' feet'%></li>
+          <% end %>
+          <% unless ind_vert[1] == 0 %>
+          <li><%= ind_vert[4].to_s + ' - ' + number_with_delimiter(number_with_precision(ind_vert[1], :precision => 0)).to_s + ' feet' %></li>
+          <% end %>
+          <% unless ind_vert[2] == 0 %>
+          <li><%= ind_vert[5].to_s + ' - ' + number_with_delimiter(number_with_precision(ind_vert[2], :precision => 0)).to_s + ' feet' %></li>
+          <% end %>
+        </ol>
+      </div>
+      <div class="threecol">
+        <h3 class="white">All Time</h3>
+        <ol class="white">
+          <% high_pts = Ride.highestPts(past_year) %>
+          <% unless high_pts[0] == 0 %>
+          <li><%= high_pts[3].to_s + ' - ' + number_with_delimiter(number_with_precision(high_pts[0], :precision => 0)).to_s + ' pts'%></li>
+          <% end %>
+          <% unless high_pts[1] == 0 %>
+          <li><%= high_pts[4].to_s + ' - ' + number_with_delimiter(number_with_precision(high_pts[1], :precision => 0)).to_s + ' pts' %></li>
+          <% end %>
+          <% unless high_pts[2] == 0 %>
+          <li><%= high_pts[5].to_s + ' - ' + number_with_delimiter(number_with_precision(high_pts[2], :precision => 0)).to_s + ' pts' %></li>
+          <% end %>
+        </ol> 
+      </div>
+      <div class="threecol last">
+        <h3 class="white">All Time</h3>
+        <ol class="white">
+          <% fastest = Ride.highestAveSpeed(past_year) %>
+          <% unless fastest[0] == 0 %>
+          <li><%= fastest[3].to_s + ' - ' + number_with_delimiter(number_with_precision(fastest[0], :precision => 1)).to_s + ' mph'%></li>
+          <% end %>
+          <% unless fastest[1] == 0 %>
+          <li><%= fastest[4].to_s + ' - ' + number_with_delimiter(number_with_precision(fastest[1], :precision => 1)).to_s + ' mph' %></li>
+          <% end %>
+          <% unless fastest[2] == 0 %>
+          <li><%= fastest[5].to_s + ' - ' + number_with_delimiter(number_with_precision(fastest[2], :precision => 1)).to_s + ' mph' %></li>
+          <% end %>
+        </ol>
+      </div>        
+      </div>
+    </div>
+    <div class="row">
       <div class="sixcol">&nbsp;</div>
-      <div class="sixcol last">
+      <div class="threecol">
         <p class="white footnote"><strong>* Points: 1 Mile or 100 Vertical feet per point</strong></p>
+      </div>
+      <div class="threecol last">
+        <p class="white footnote"><strong>** Average Speed</strong></p>
       </div>
     </div>
     </div>

@@ -31,7 +31,6 @@ nav {
   margin: 0 auto;
   font-size: 18px;
   .special-font();
-  width: 502px;
 }
 .nav-list li a {
   display: block;
@@ -200,9 +199,19 @@ ul li {
   margin-bottom: 15px;
   margin-left: 15px;
 }
-.banner {
+.banner.one {
   background: url(/assets/banners/california-hills.jpg) no-repeat left bottom;
   height: 540px;
+}
+.banner.one .attribution.two {
+  display:none;
+}
+.banner.two {
+  background: url(/assets/banners/gg-bridge.jpg) no-repeat right bottom;
+  height: 540px;
+}
+.banner.two .attribution.one {
+  display:none;
 }
 .banner-quoted {
   font-size: 18px;
@@ -287,4 +296,10 @@ nav .inline {
   font-size: 12px;
   font-weight: bold;
   text-align: center;
+}
+
+.next {
+  margin-top: 70px;
+  text-align: center;
+  font-weight: bold;
 }

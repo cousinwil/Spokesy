@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
     correct_event = Event.first
   	if events
   		events.each do |event|
-  			if ((event.date >= Date.today) && (event.date < correct_date))
+  			if ((event) && (event.date) && (event.date >= Date.today) && (event.date < correct_date))
           correct_date = event.date
           correct_event = event
         end

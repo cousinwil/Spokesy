@@ -9,7 +9,7 @@
 #  updated_at :datetime        not null
 
 class Member < ActiveRecord::Base
-  attr_accessible :strava_id, :user_name, :user_id
+  attr_accessible :strava_id, :user_name, :user_id, :club_id
 
   belongs_to :user
 
@@ -30,7 +30,7 @@ class Member < ActiveRecord::Base
       puts 'NAME: ' + member['name'].to_s
       member = Member.find(:first, :conditions => ["strava_id='#{athlete_id}'"])
       unless member
-        Member.create([{ user_name: athlete_name.to_s, strava_id: athlete_id.to_i}])
+        Member.create([{ user_name: athlete_name.to_s, strava_id: athlete_id.to_i }])
       end
     end
   end

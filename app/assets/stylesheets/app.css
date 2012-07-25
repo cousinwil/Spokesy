@@ -382,7 +382,7 @@ ul li {
 }
 .banner.two {
   background: url(/assets/banners/gg-bridge.jpg) no-repeat right bottom;
-  height: 540px;
+  height: 620px;
 }
 .banner.two .attribution.one {
   display: none;
@@ -418,8 +418,14 @@ nav .inline {
   font-size: 18px;
   line-height: 1.4;
 }
+.banner.two .quote-container {
+  height: 620px;
+}
+.quote-container p {
+  margin-bottom: 20px;
+}
 .mailchimp {
-  margin: 20px 0 14px;
+  margin: 40px 0 14px;
 }
 .tri-form li {
   font-size: 18px;

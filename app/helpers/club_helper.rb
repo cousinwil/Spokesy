@@ -17,7 +17,7 @@ module ClubHelper
       end
       if miles > data[2]
         data[2] = miles
-        data[3] = ride.name
+        data[3] = Ride.format_name(ride.name)
       end
     end
     return data

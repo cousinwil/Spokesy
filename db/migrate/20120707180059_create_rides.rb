@@ -7,8 +7,8 @@ class CreateRides < ActiveRecord::Migration
       t.decimal :vertical
       t.decimal :distance
       t.boolean :commute
-      t.string :name
-      t.date :date
+      t.string  :name
+      t.date    :date
       t.integer :ride_id
       t.integer :movingTime
       t.timestamps

@@ -121,7 +121,7 @@
         <h2 class="white">Most Vertical</h2>
         <% past_year = (Date.today - 365).to_date %>
         <% past_month = (Date.today - 28).to_date %>
-        <% ind_vert = Ride.highestVert(past_month) %>
+        <% ind_vert = findHighest(method(:findVert), past_month) %>
         <img src="/assets/stat-vert.png" class="stat-icon">
         <h3 class="white">This Month</h3>
         <ol class="white">
@@ -141,7 +141,7 @@
         <img src="/assets/stat-points.png" class="stat-icon">
         <h3 class="white">This Month</h3>
         <ol class="white">
-          <% high_pts = Ride.highestPts(past_month) %>
+          <% high_pts = findHighest(method(:getPoints), past_month) %>
           <% unless high_pts[0] == 0 %>
           <li><%= high_pts[3].to_s + ' - ' + number_with_delimiter(number_with_precision(high_pts[0], :precision => 0)).to_s + ' pts'%></li>
           <% end %>
@@ -158,7 +158,7 @@
         <img src="/assets/stat-fastest.png" class="stat-icon">
         <h3 class="white">This Month</h3>
         <ol class="white">
-          <% fastest = Ride.highestAveSpeed(past_month) %>
+          <% fastest = findHighest(method(:getAveSpeed), past_month) %>
           <% unless fastest[0] == 0 %>
           <li><%= fastest[3].to_s + ' - ' + number_with_delimiter(number_with_precision(fastest[0], :precision => 1)).to_s + ' mph'%></li>
           <% end %>
@@ -176,14 +176,14 @@
       <div class="threecol">
         <h3 class="white">All Time</h3>
         <ol class="white">
-          <% data = getData(Ride.all) %>
+          <% data = getData(@rides) %>
           <li>Total Miles - <%= number_with_delimiter(number_with_precision(data[0], :precision => 1)) if data[0] %></li>
           <li>Commute Miles - <%= number_with_delimiter(number_with_precision(data[1], :precision => 1)) if data[1] %></li>
           <li>Longest Ride - <%= number_with_delimiter(number_with_precision(data[2], :precision => 1)) if data[2] %> <%= '(' + data[3].to_s + ')' if data[3] %></li>
         </ol>
       </div>
       <div class="threecol">
-        <% ind_vert = Ride.highestVert(past_year) %>
+        <% ind_vert = findHighest(method(:findVert), past_year) %>
         <h3 class="white">All Time</h3>
         <ol class="white">
           <% unless ind_vert[0] == 0 %>
@@ -200,7 +200,7 @@
       <div class="threecol">
         <h3 class="white">All Time</h3>
         <ol class="white">
-          <% high_pts = Ride.highestPts(past_year) %>
+          <% high_pts = findHighest(method(:getPoints), past_year) %>
           <% unless high_pts[0] == 0 %>
           <li><%= high_pts[3].to_s + ' - ' + number_with_delimiter(number_with_precision(high_pts[0], :precision => 0)).to_s + ' pts'%></li>
           <% end %>
@@ -215,7 +215,7 @@
       <div class="threecol last">
         <h3 class="white">All Time</h3>
         <ol class="white">
-          <% fastest = Ride.highestAveSpeed(past_year) %>
+          <% fastest = findHighest(method(:getAveSpeed), past_year) %>
           <% unless fastest[0] == 0 %>
           <li><%= fastest[3].to_s + ' - ' + number_with_delimiter(number_with_precision(fastest[0], :precision => 1)).to_s + ' mph'%></li>
           <% end %>

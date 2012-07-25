@@ -13,12 +13,12 @@ User.create([
 	  admin: 'true'
 	}])
 Event.create([
-	{ date: "7/28/2012",
+	{ date: "28/7/2012",
 	  description: "Join us Saturday, 7/28, at 10am at the Sports Basement for casual spin into Marin. We're going to go over the bridge, into Sausalito, and out past Tiburon on a no drop Paradise Loop ride.",
 	  miles: 40,
 	  name: "Saturday Spandex"
 	},
-    { date: "8/4/2012",
+    { date: "4/8/2012",
 	  description: "Join us 8/4 for the 50th Marin Century and Mt. Tam Double! We have club members representing in the double and the metric centuries!!",
 	  miles: 40,
 	  name: "Saturday Spandex"

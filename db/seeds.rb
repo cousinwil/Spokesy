@@ -12,15 +12,21 @@ User.create([
 	  password_confirmation: "foobar",
 	  admin: 'true'
 	}])
+Event.create([
+	{ date: "7/28/2012",
+	  description: "Join us at 10am at the Sports Basement for casual spin into Marin. We're going to go over the bridge, into Sausalito, and out past Tiburon on a no drop Paradise Loop ride.",
+	  miles: 40,
+	  name: "Saturday Spandex"
+	}])
 
 Member.create([
 	{
-		user_name: 'Kevin Anderson',
-    strava_id: 14210,
+      user_name: 'Kevin Anderson',
+      strava_id: 14210,
 		}])
 GlobalData.create([
 	{
-		name: 'club_id',
+    name: 'club_id',
     value: '5493'
 	},
   {

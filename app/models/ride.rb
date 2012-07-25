@@ -8,7 +8,7 @@ class Ride < ActiveRecord::Base
   		ids.push(ride.ride_id)
   	end
     return ids
-  end
+  end   
 
   def self.saveNewRides(ride_details)
     ride_details.each do |ride|

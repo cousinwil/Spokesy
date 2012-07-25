@@ -124,51 +124,21 @@
         <% ind_vert = findHighest(method(:findVert), past_month) %>
         <img src="/assets/stat-vert.png" class="stat-icon">
         <h3 class="white">This Month</h3>
-        <ol class="white">
-          <% unless ind_vert[0] == 0 %>
-          <li><%= ind_vert[3].to_s + ' - ' + number_with_delimiter(number_with_precision(ind_vert[0], :precision => 0)).to_s + ' feet'%></li>
-          <% end %>
-          <% unless ind_vert[1] == 0 %>
-          <li><%= ind_vert[4].to_s + ' - ' + number_with_delimiter(number_with_precision(ind_vert[1], :precision => 0)).to_s + ' feet' %></li>
-          <% end %>
-          <% unless ind_vert[2] == 0 %>
-          <li><%= ind_vert[5].to_s + ' - ' + number_with_delimiter(number_with_precision(ind_vert[2], :precision => 0)).to_s + ' feet' %></li>
-          <% end %>
-        </ol>
+        <%= render :partial => 'common/leaderboard_data', :locals => {:data => ind_vert, :units => ' feet', :decimals => 0 } %>
       </div>
       <div class="threecol">
         <h2 class="white">Score*</h2>
         <img src="/assets/stat-points.png" class="stat-icon">
         <h3 class="white">This Month</h3>
-        <ol class="white">
-          <% high_pts = findHighest(method(:getPoints), past_month) %>
-          <% unless high_pts[0] == 0 %>
-          <li><%= high_pts[3].to_s + ' - ' + number_with_delimiter(number_with_precision(high_pts[0], :precision => 0)).to_s + ' pts'%></li>
-          <% end %>
-          <% unless high_pts[1] == 0 %>
-          <li><%= high_pts[4].to_s + ' - ' + number_with_delimiter(number_with_precision(high_pts[1], :precision => 0)).to_s + ' pts' %></li>
-          <% end %>
-          <% unless high_pts[2] == 0 %>
-          <li><%= high_pts[5].to_s + ' - ' + number_with_delimiter(number_with_precision(high_pts[2], :precision => 0)).to_s + ' pts' %></li>
-          <% end %>
-        </ol>
+        <% high_pts = findHighest(method(:getPoints), past_month) %>
+        <%= render :partial => 'common/leaderboard_data', :locals => { :data => high_pts, :units => ' pts', :decimals => 0} %>
       </div>
       <div class="threecol last">
         <h2 class="white">Fastest**</h2>
         <img src="/assets/stat-fastest.png" class="stat-icon">
         <h3 class="white">This Month</h3>
-        <ol class="white">
-          <% fastest = findHighest(method(:getAveSpeed), past_month) %>
-          <% unless fastest[0] == 0 %>
-          <li><%= fastest[3].to_s + ' - ' + number_with_delimiter(number_with_precision(fastest[0], :precision => 1)).to_s + ' mph'%></li>
-          <% end %>
-          <% unless fastest[1] == 0 %>
-          <li><%= fastest[4].to_s + ' - ' + number_with_delimiter(number_with_precision(fastest[1], :precision => 1)).to_s + ' mph' %></li>
-          <% end %>
-          <% unless fastest[2] == 0 %>
-          <li><%= fastest[5].to_s + ' - ' + number_with_delimiter(number_with_precision(fastest[2], :precision => 1)).to_s + ' mph' %></li>
-          <% end %>
-        </ol>
+        <% fastest = findHighest(method(:getAveSpeed), past_month) %>
+        <%= render :partial => 'common/leaderboard_data', :locals => {:data => fastest, :units => ' mph', :decimals => 2 } %>
       </div>
     </div>
     <div class="row">
@@ -185,47 +155,17 @@
       <div class="threecol">
         <% ind_vert = findHighest(method(:findVert), past_year) %>
         <h3 class="white">All Time</h3>
-        <ol class="white">
-          <% unless ind_vert[0] == 0 %>
-          <li><%= ind_vert[3].to_s + ' - ' + number_with_delimiter(number_with_precision(ind_vert[0], :precision => 0)).to_s + ' feet'%></li>
-          <% end %>
-          <% unless ind_vert[1] == 0 %>
-          <li><%= ind_vert[4].to_s + ' - ' + number_with_delimiter(number_with_precision(ind_vert[1], :precision => 0)).to_s + ' feet' %></li>
-          <% end %>
-          <% unless ind_vert[2] == 0 %>
-          <li><%= ind_vert[5].to_s + ' - ' + number_with_delimiter(number_with_precision(ind_vert[2], :precision => 0)).to_s + ' feet' %></li>
-          <% end %>
-        </ol>
+        <%= render :partial => 'common/leaderboard_data', :locals => {:data => ind_vert, :units => ' feet', :decimals => 0 } %>
       </div>
       <div class="threecol">
         <h3 class="white">All Time</h3>
-        <ol class="white">
-          <% high_pts = findHighest(method(:getPoints), past_year) %>
-          <% unless high_pts[0] == 0 %>
-          <li><%= high_pts[3].to_s + ' - ' + number_with_delimiter(number_with_precision(high_pts[0], :precision => 0)).to_s + ' pts'%></li>
-          <% end %>
-          <% unless high_pts[1] == 0 %>
-          <li><%= high_pts[4].to_s + ' - ' + number_with_delimiter(number_with_precision(high_pts[1], :precision => 0)).to_s + ' pts' %></li>
-          <% end %>
-          <% unless high_pts[2] == 0 %>
-          <li><%= high_pts[5].to_s + ' - ' + number_with_delimiter(number_with_precision(high_pts[2], :precision => 0)).to_s + ' pts' %></li>
-          <% end %>
-        </ol> 
+        <% high_pts = findHighest(method(:getPoints), past_year) %>
+        <%= render :partial => 'common/leaderboard_data', :locals => { :data => high_pts, :units => ' pts', :decimals => 0} %>
       </div>
       <div class="threecol last">
         <h3 class="white">All Time</h3>
-        <ol class="white">
-          <% fastest = findHighest(method(:getAveSpeed), past_year) %>
-          <% unless fastest[0] == 0 %>
-          <li><%= fastest[3].to_s + ' - ' + number_with_delimiter(number_with_precision(fastest[0], :precision => 1)).to_s + ' mph'%></li>
-          <% end %>
-          <% unless fastest[1] == 0 %>
-          <li><%= fastest[4].to_s + ' - ' + number_with_delimiter(number_with_precision(fastest[1], :precision => 1)).to_s + ' mph' %></li>
-          <% end %>
-          <% unless fastest[2] == 0 %>
-          <li><%= fastest[5].to_s + ' - ' + number_with_delimiter(number_with_precision(fastest[2], :precision => 1)).to_s + ' mph' %></li>
-          <% end %>
-        </ol>
+        <% fastest = findHighest(method(:getAveSpeed), past_year) %>
+        <%= render :partial => 'common/leaderboard_data', :locals => {:data => fastest, :units => ' mph', :decimals => 2 } %>
       </div>        
       </div>
     </div>

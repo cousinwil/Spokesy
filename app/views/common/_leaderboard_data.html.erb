@@ -1,0 +1,9 @@
+<ol class="white">
+  <% (0..2).each do |i| %>
+    <% unless data[i] == 0 %>
+    <li>
+      <%= data[i+3].to_s + ' - ' + number_with_delimiter(number_with_precision(data[i], :precision => decimals)).to_s + units %>
+    </li>
+    <% end %>
+  <% end %>
+</ol>

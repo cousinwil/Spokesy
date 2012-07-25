@@ -3,28 +3,7 @@
       <div class="sixcol">
       </div>
       <div class="sixcol last">
-        <div class="quote-container">
-          <h1 class="red">Are you a Spoke Geek?</h1>
-          
-          <p class="founder-quote gray">&ldquo;Riding is great for getting the heart rate up, exploring new places, chatting with friends... It&rsquo;s like golf. Except it&rsquo;s a workout and I know how to ride a bike.&rdquo; - Wil Everts, Club Founder</p>
-          <p class="gray">Spoke Geek is a casual cycling club for SF start-up geeks and friends. Sign up below to receive the Strava Club password and monthly ride alerts via email (<em>we promise not to spam you or sell your information</em>.)</p>
-
-          <div class="mailchimp">
-            <form action="http://powderenvy.us2.list-manage.com/subscribe/post?u=9455618a19fa33f9c97d56019&amp;id=a3cbfa7871" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
-              <ul class="tri-form clearfix">
-                <li class="left"><h2><label for="mce-EMAIL" class="gray">Email</label></h2></li>
-                <li class="left"><input type="email" value="" name="EMAIL" class="text-input" id="mce-EMAIL"></li>
-                <li class="left last"><input type="submit" value="Let&rsquo;s Ride!" name="subscribe" id="mc-embedded-subscribe" class="btn btn-red white"></li>
-              </ul>
-            </form>
-          </div>
-
-          <h3 class="gray">Next Group Rides:</h3>
-
-          <ul class="orgs ribbon">
-            <%= render :partial => 'common/event_list' %>
-          </ul>
-        </div>
+        <%= render "club/quote_container" -%>
 
         <div class="attribution one">
           <p>Photo Attribution: <a href="http://creativecommons.org/licenses/by-nc-nd/2.0/" class="white">Some rights reserved</a> by <a href="http://www.flickr.com/photos/everywhereatonce/" class="white">everywhereATonce</a>.</p>
@@ -40,6 +19,8 @@
       <div class="twelvecol">
         <h1 class="white">Spoke Geek Cycling Club</h1>
       </div>
+    </div>
+    <div class="row">
       <div class="sevencol">
         <div class="hero-image">&nbsp;</div>
       </div>
@@ -53,7 +34,28 @@
         </ul>
         <p>For information, sponsorships, partnerships, press, and questions please email <a href="mailto:your@cousinwil.com" class="yellow">your@cousinwil.com</a>
       </div>
-
+    </div>
+    <div class="row tweets">
+      <div class="twelvecol">
+        <h2 class="white">Recent <a href="https://twitter.com/spokegeek" class="yellow">@SpokeGeek</a> Tweets</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="fourcol tweet">
+        <div class="body gray">
+          My Marin Double Century packet arrived! #nervous #excited <a href="http://instagr.am/p/NcxJEMK0Bl/">http://instagr.am/p/NcxJEMK0Bl/</a>
+        </div>
+      </div>
+      <div class="fourcol tweet">
+        <div class="body gray">
+          Blew out the sidewall of my tire in no man's land... <a href="http://instagr.am/p/NZJvR2q0OP/">http://instagr.am/p/NZJvR2q0OP/</a>
+        </div>
+      </div>
+      <div class="fourcol tweet last">
+        <div class="body gray">
+          My Santa Barbara wheels have arrived! BMC Team Machine SLT01 <a href="http://instagr.am/p/NL39HDK0Bn/">http://instagr.am/p/NL39HDK0Bn/</a>
+        </div>
+      </div>
     </div>
   </article>
   <article id="merch" class="third bg-white container">

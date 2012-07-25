@@ -116,7 +116,7 @@ form {
   font-size: 14px;
 }
 h2 small {
-  font-size: .3em;
+  font-size: .6em;
 }
 /* buttons.less 
    ------------------------------------------------------------------------- */
@@ -486,6 +486,21 @@ nav .inline {
   margin-top: 70px;
   text-align: center;
   font-weight: bold;
+}
+.tweet {
+  padding-bottom: 65px;
+  background: url(/assets/tweet.png) bottom right no-repeat;
+}
+.tweet .body {
+  background-color: #fff;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  padding: 8px;
+  min-height: 64px;
+}
+.tweets {
+  margin-top: 24px;
 }
 /* media-queries.less - Media Queries for size-specific layouts 
   --------------------------------------------------------------------------- */

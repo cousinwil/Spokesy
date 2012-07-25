@@ -90,24 +90,33 @@ class Ride < ActiveRecord::Base
     highest = [0, 0, 0, '', '', '']
     for member in Member.all
       amount = var.call(member, date)
+      name = Ride.format_name(member.user_name)
       if amount >= highest[0]
         highest[2] = highest[1]
         highest[5] = highest[4]
         highest[1] = highest[0]
         highest[4] = highest[3]
-        highest[3] = member.user_name
+        highest[3] = name
         highest[0] = amount
       elsif amount >= highest[1]
         highest[2] = highest[1]
         highest[5] = highest[4]
         highest[1] = amount
-        highest[4] = member.user_name
+        highest[4] = name
       elsif amount > highest[2]
         highest[2] = amount
-        highest[5] = member.user_name
+        highest[5] = name
       end
     end
     return highest
+  end
+
+  def self.format_name(name)
+    if name
+      array = name.split
+      return array[0] + ' ' + array[-1][0, 1] + '.'
+    end
+    return name
   end
 
   def self.findRides

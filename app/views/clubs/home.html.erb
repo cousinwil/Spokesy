@@ -40,9 +40,9 @@
           <h2 class="white">Recent <a href="https://twitter.com/<%= @club.twitter %>" class="yellow">@<%= @club.twitter %></a> Tweets</h2>
         </div>
       </div>
+      <% if Tweet.first %>
       <div class="row">
         <% a = Tweet.first.id %>
-
         <% (a..(a+2)).each do |i| %>
           <% if i == a+2 %>
             <div class="fourcol tweet last">
@@ -60,6 +60,7 @@
           </div>
         <% end %>
       </div>
+      <% end %>
     </article>
     <article id="merch" class="third bg-white container">
       <div class="row">

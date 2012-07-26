@@ -1,7 +1,7 @@
 #Spokesy
 
 ##What is it?
-Spokesy is a simple RoR app for making a simple Bicycle club website. It pulls in tweets and rides from the outside world and displays them along your club info, events, and more.
+Spokesy is a simple RoR app for making a one page Bicycle Club/Velo Club website. It pulls in tweets and rides from the outside world and displays them along your club info, events, and more.
 
 ##Set Up & Deployment [TO BE EDITED] 
 

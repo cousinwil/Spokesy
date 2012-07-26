@@ -1,9 +1,9 @@
-#Spoke Geek
+#Spokesy
 
 ##What is it?
-Spoke Geek is a RoR app for the Spoke Geek Bicycle club. It pulls in tweets and rides from the outside world and displays them along with club info, events, and more.
+Spokesy is a simple RoR app for making a simple Bicycle club website. It pulls in tweets and rides from the outside world and displays them along your club info, events, and more.
 
-##Environment Set Up
+##Set Up & Deployment [TO BE EDITED] 
 
 1. Clone spoke-geek
   * $ git clone git@github.com:cousinwil/spoke-geek.git

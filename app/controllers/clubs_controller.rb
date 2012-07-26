@@ -10,7 +10,6 @@ class ClubsController < ApplicationController
   	if Delayed::Job.all.empty?
   		Delayed::Job.enqueue(RideJob.new)
   	end
-
     @tweets = Tweet.find(:all)
   end
 
@@ -27,9 +26,29 @@ class ClubsController < ApplicationController
     end
   end
 
+  def new
+    @title = 'Create Club' 
+    @club = Club.new
+  end
+
   def confirmed
   end
 
   def thanks
+  end
+
+  def index
+    redirect_to root_path
+  end
+  
+  def update
+    @club = Club.find(params[:id])
+    respond_to do |format|
+        if @club.update_attributes(params[:club])
+          format.html { redirect_to root_path, notice: 'WORKED' }
+        else
+          format.html { redirect_to root_path, notice: 'FUCKED' }
+        end
+    end
   end
 end

@@ -24,6 +24,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    redirect_to root_path
+  end
+
+  def update
+    @user = User.new(params[:user])
+    respond_to do |format|
+      @user.update_attributes(params[:user])
+      format.html { redirect_to root_path }
+    end
+  end
+
   def show
     @user = User.find(params[:id])
   	@title = "#{@user.name}'s Profile"

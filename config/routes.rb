@@ -16,6 +16,7 @@ SpokeGeek::Application.routes.draw do
   match '/sign_in',    to: 'sessions#new'
   match '/signout',    to: 'sessions#destroy', via: :delete
   match '/members/:id', to: 'members#show'
+  match '/clubs/home', to: 'clubs#home'
 
 
   # The priority is based upon order of creation:

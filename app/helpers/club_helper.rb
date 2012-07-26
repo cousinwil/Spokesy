@@ -88,4 +88,14 @@ module ClubHelper
       return 0.0
     end
   end
+
+   def redirect_to_root #where is your home?
+    if User.first == nil
+      redirect_to '/users/new'
+    elsif Club.first == nil
+      redirect_to '/clubs/new'
+    else
+      redirect_to '/clubs/home' # this should be the only instance of 'redirect_to root_path' in the app
+    end
+  end
 end

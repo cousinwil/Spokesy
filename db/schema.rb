@@ -17,8 +17,16 @@ ActiveRecord::Schema.define(:version => 20120726010210) do
     t.string   "club_id"
     t.string   "name"
     t.string   "twitter"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "admin_id"
+    t.string   "home_headline"
+    t.string   "home_quote"
+    t.boolean  "email_list"
+    t.string   "mail_list_desc"
+    t.string   "about_headline"
+    t.string   "about_body"
+    t.string   "copyright"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "delayed_jobs", :force => true do |t|

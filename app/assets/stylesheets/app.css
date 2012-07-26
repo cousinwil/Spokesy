@@ -502,6 +502,32 @@ nav .inline {
 .tweets {
   margin-top: 24px;
 }
+#club_home_headline{
+  height:30px;
+  width:450px;
+}
+#club_home_quote{
+  height:80px;
+  width:400px;
+}
+#club_mail_list_desc{
+  height:80px;
+  width:400px;
+}
+#club_about_headline{
+  height:40px;
+  width:500px;
+}
+#club_about_body{
+  height:315px;
+  width:350px;
+}
+.top-text{
+  background-color:inherit;
+  border:4px solid #FFF;
+  /*border-radius:15px;*/
+  font-size:inherit;
+}
 /* media-queries.less - Media Queries for size-specific layouts 
   --------------------------------------------------------------------------- */
 @media only screen and (min-width: 1024px) {

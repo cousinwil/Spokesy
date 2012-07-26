@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :admin_required # Just for now while users aren't supported
+  #before_filter :admin_required # Just for now while users aren't supported
 
   def new
   	@title = 'Sign Up'
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     respond_to do |format|
   	  if @user.save
-        redirect_to @user
+        redirect_to root_path
         flash[:success] = "Welcome to the club!"
       else
         render 'new'

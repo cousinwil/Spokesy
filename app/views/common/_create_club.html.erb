@@ -1,0 +1,24 @@
+<article class="main full-page">
+  <div class="row">
+    <div class="eightcol">
+    <h1><%= title %></h1>
+
+    <%= form_for(club) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :club_id %>
+      <%= f.text_field :club_id %>
+
+      <%= f.label :twitter %>
+      <%= f.text_field :twitter %>
+
+      <%= f.label :email_list, "Confirmation" %>
+      <%= f.check_box :email_list, checked_value = true, unchecked_value = false %>
+
+      <%= f.submit "Create my account", class: "btn btn-red" %>
+    <% end %>
+  </div>
+  </div>
+</article>

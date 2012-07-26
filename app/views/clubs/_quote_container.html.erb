@@ -1,0 +1,23 @@
+        <div class="quote-container">
+          <h1 class="red"><%= f.text_field :home_headline, :class => 'top-text', :placeholder => 'Club Headline' %></h1>
+          
+          <p class="founder-quote gray"><%= f.text_area :home_quote, :class => 'top-text', :placeholder => 'Admirable quote' %></p>
+          <p class="gray"><%= f.text_area :mail_list_desc, :class => 'top-text', :placeholder => 'Description of the mailing list' %></p>
+          <% if @club.email_list %>
+            <div class="mailchimp">
+              <form action="http://powderenvy.us2.list-manage.com/subscribe/post?u=9455618a19fa33f9c97d56019&amp;id=a3cbfa7871" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+                <ul class="tri-form clearfix">
+                  <li class="left"><h2><label for="mce-EMAIL" class="gray">Email</label></h2></li>
+                  <li class="left"><input type="email" value="" name="EMAIL" class="text-input" id="mce-EMAIL"></li>
+                  <li class="left last"><input type="submit" value="Let&rsquo;s Ride!" name="subscribe" id="mc-embedded-subscribe" class="btn btn-red white"></li>
+                </ul>
+              </form>
+            </div>
+          <% end %>
+
+          <h3 class="gray">Next Group Rides:</h3>
+
+          <ul class="orgs ribbon">
+            <%= render :partial => 'common/event_list' %>
+          </ul>
+        </div>

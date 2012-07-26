@@ -7,10 +7,11 @@ SpokeGeek::Application.routes.draw do
   resources :events
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :clubs
 
-  root                 to: 'club#home'
-  match '/thanks',     to: 'club#thanks'
-  match '/confirmed',  to: 'club#confirmed'
+  root                 to: 'clubs#home'
+  match '/thanks',     to: 'clubs#thanks'
+  match '/confirmed',  to: 'clubs#confirmed'
   match '/signup',     to: 'users#new'
   match '/sign_in',    to: 'sessions#new'
   match '/signout',    to: 'sessions#destroy', via: :delete

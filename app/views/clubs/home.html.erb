@@ -37,25 +37,28 @@
       </div>
       <div class="row tweets">
         <div class="twelvecol">
-          <h2 class="white">Recent <a href="https://twitter.com/spokegeek" class="yellow">@SpokeGeek</a> Tweets</h2>
+          <h2 class="white">Recent <a href="https://twitter.com/<%= @club.twitter %>" class="yellow">@<%= @club.twitter %></a> Tweets</h2>
         </div>
       </div>
       <div class="row">
-        <div class="fourcol tweet">
-          <div class="body gray">
-            My Marin Double Century packet arrived! #nervous #excited <a href="http://instagr.am/p/NcxJEMK0Bl/">http://instagr.am/p/NcxJEMK0Bl/</a>
+        <% a = Tweet.first.id %>
+
+        <% (a..(a+2)).each do |i| %>
+          <% if i == a+2 %>
+            <div class="fourcol tweet last">
+          <% else %>
+            <div class="fourcol tweet">
+          <% end %>
+            <div class="body gray">
+              <% text = Tweet.bodyWithLink(Tweet.find(i).body) %>
+              <% if text.class == String %>
+                <%= Tweet.find(i).body %>
+              <% else %>
+                <%= text[0] %><a href="<%= text[1] %>"><%= text[1] %></a><%= text[2] %>
+              <% end %>
+            </div>
           </div>
-        </div>
-        <div class="fourcol tweet">
-          <div class="body gray">
-            Blew out the sidewall of my tire in no man's land... <a href="http://instagr.am/p/NZJvR2q0OP/">http://instagr.am/p/NZJvR2q0OP/</a>
-          </div>
-        </div>
-        <div class="fourcol tweet last">
-          <div class="body gray">
-            My Santa Barbara wheels have arrived! BMC Team Machine SLT01 <a href="http://instagr.am/p/NL39HDK0Bn/">http://instagr.am/p/NL39HDK0Bn/</a>
-          </div>
-        </div>
+        <% end %>
       </div>
     </article>
     <article id="merch" class="third bg-white container">

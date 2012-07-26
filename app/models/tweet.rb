@@ -22,4 +22,17 @@ class Tweet < ActiveRecord::Base
     end
     return ids
   end
+
+  def self.bodyWithLink(text)
+    pieces = []
+    if text.downcase.include?("http://")
+      index = text.index('http://')
+      pieces[0] = text.slice!(0..(index-1))
+      pieces[1] = text.split(' ')[0]
+      pieces[2] = text.delete(pieces[1])
+      return pieces
+    else
+      return text
+    end
+  end
 end

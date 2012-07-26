@@ -1,9 +1,9 @@
-#Spoke Geek
+#Spokesy
 
 ##What is it?
-Spoke Geek is a RoR app for the Spoke Geek Bicycle club. It pulls in tweets and rides from the outside world and displays them along with club info, events, and more.
+Spokesy is a simple RoR app for making a one page Bicycle Club/Velo Club website. It uses the Twitter API and Strava API to pull in tweets and rides. The site displays these along your club info, events, and more. Spokesy requires no real coding to roll-out a site, but it also serves as a great starting point for someone wanting to make a larger application.
 
-##Environment Set Up
+##Set Up & Deployment [TO BE EDITED] 
 
 1. Clone spoke-geek
   * $ git clone git@github.com:cousinwil/spoke-geek.git
@@ -19,3 +19,8 @@ Spoke Geek is a RoR app for the Spoke Geek Bicycle club. It pulls in tweets and 
   * Sign in with the following credentials: ride@spoke-geek.com / foobar
   * Go to http://localhost:3000/events/new
   * Create your own event, if the date of the event is before 8/4 and after yesterday's date the event will show up on the home page
+
+##Credits
+
+* Wil Everts (@cousinwil): Project Founder, UI Development
+* Dosty Everts (@evertsd): Web Developer, Ruby on Rails

@@ -14,8 +14,8 @@
       <%= f.label :twitter %>
       <%= f.text_field :twitter %>
 
-      <%# f.label :email_list, "Confirmation" %>
-      <%# f.check_box :email_list, checked_value = true, unchecked_value = false %>
+      <%= f.label :email_list, "Confirmation" %>
+      <%= f.check_box :email_list, :check_value => true, :unchecked_value => false %>
 
       <%= f.submit "Create my account", class: "btn btn-red" %>
     <% end %>

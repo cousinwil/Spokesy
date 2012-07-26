@@ -7,7 +7,7 @@ class ClubsController < ApplicationController
     if Club.first
       @club = Club.first
     end
-  	if Delayed::Job.all.empty?
+  	if ((Delayed::Job.all.empty?) && (Club.first) && (Club.first.twitter) && (Club.first.club_id))
   		Delayed::Job.enqueue(RideJob.new)
   	end
     @tweets = Tweet.find(:all)
@@ -17,10 +17,10 @@ class ClubsController < ApplicationController
     @club = Club.new(params[:club])
     respond_to do |format|
       if @club.save
-        redirect_to root_path
+        format.html { redirect_to root_path, notice: 'WORKED' }
         flash[:success] = "Welcome to the club!"
       else
-        render 'new'
+        format.html { redirect_to root_path, notice: 'NOPE' }
         flash[:error] = "Oops! There was an error creating your account."
       end
     end
@@ -40,7 +40,7 @@ class ClubsController < ApplicationController
   def index
     redirect_to root_path
   end
-  
+
   def update
     @club = Club.find(params[:id])
     respond_to do |format|

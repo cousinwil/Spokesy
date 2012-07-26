@@ -15,10 +15,10 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     respond_to do |format|
   	  if @user.save
-        redirect_to root_path
+        format.html { redirect_to root_path, notice: 'WORKED' }
         flash[:success] = "Welcome to the club!"
       else
-        render 'new'
+        format.html { redirect_to root_path, notice: 'NOPE' }
         flash[:error] = "Oops! There was an error creating your account."
       end
     end

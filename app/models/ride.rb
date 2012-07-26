@@ -27,7 +27,7 @@ class Ride < ActiveRecord::Base
 
   def self.findRides
     strava_api = StravaApiHelper["www.strava.com"]
-    @club_id = GlobalData.find(:first, :conditions => ['name = ?', 'club_id']).value
+    @club_id = Club.first.club_id
 
     Member.get_members(@club_id, strava_api)
 

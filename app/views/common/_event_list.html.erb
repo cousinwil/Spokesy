@@ -1,9 +1,9 @@
-<% event = Event.next_event %>
+<% events = Event.next_events(2) %>
 <% (0..1).each do |i| %>
-	<% if event[i] %>
+	<% if events[i] %>
 	<li class="bullet gray">
-		<strong><%= event[i].name %> (~<%= event[i].miles %> Miles)</strong> 
-		<span class="sub"><%= event[i].description %></span>
+		<strong><%= events[i].name %> (~<%= events[i].miles %> Miles)</strong> 
+		<span class="sub"><%= events[i].description %></span>
 	</li>
 	<% else %>
 	<li class="bullet gray">

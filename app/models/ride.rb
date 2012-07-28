@@ -1,49 +1,52 @@
 class Ride < ActiveRecord::Base
-  attr_accessible :athlete, :commute, :distance, :points, :speed, :vertical, :ride_id, :date, :name, :movingTime
+  attr_accessible :athlete, :commute, :distance, :points, :speed, :vertical, :ride_id, :date, :name, :movingTime, :member_id
+  belongs_to :member
   include ClubHelper
 
-  def self.allIds
-  	ids = []
-  	for ride in Ride.all
-  		ids.push(ride.ride_id)
-  	end
+  def self.all_ids
+    ids = []
+    for ride in Ride.all
+      ids.push(ride.ride_id)
+    end
     return ids
   end   
 
-  def self.saveNewRides(ride_details)
+  def self.save_new_rides(ride_details)
     ride_details.each do |ride|
-      newRide = Ride.new(:commute => ride['ride']['commute'], 
-        :distance => ride['ride']['distance'].to_f,
-        :speed => ride['ride']['averageSpeed'].to_f,
-        :vertical => ride['ride']['elevationGain'].to_f,
-        :name => ride['ride']['athlete']['name'], 
-        :date => ride['ride']['startDate'], 
-        :ride_id => ride['ride']['id'],
-        :movingTime => ride['ride']['movingTime'],
-        :athlete => (Member.find_by_strava_id(ride['ride']['athlete']['id'])).id)
-      newRide.save
+      if (ride['ride']['startDate'].to_date > GlobalData.find(:first, :conditions => ['name = ?', 'start_date']).value.to_date)
+        new_ride = Ride.new(:commute => ride['ride']['commute'], 
+          :distance => ride['ride']['distance'].to_f,
+          :speed => ride['ride']['averageSpeed'].to_f,
+          :vertical => ride['ride']['elevationGain'].to_f,
+          :name => ride['ride']['athlete']['name'], 
+          :date => ride['ride']['startDate'], 
+          :ride_id => ride['ride']['id'].to_i,
+          :movingTime => ride['ride']['movingTime'].to_i,
+          :member_id => (Member.find_by_strava_id(ride['ride']['athlete']['id'])).id)
+        new_ride.save
+      end
     end
   end
 
-  def self.findRides
+  def self.find_rides
     strava_api = StravaApiHelper["www.strava.com"]
     @club_id = Club.first.club_id
 
-    Member.get_members(@club_id, strava_api)
+    Club.get_members(@club_id, strava_api)
 
-    idList = Ride.allIds
+    id_list = Ride.all_ids
     for member in Member.all
-      usefulIds = []
+      useful_ids = []
       rides = strava_api.get("rides", :athleteId=>member.strava_id, :startDate=>Date.today - 365, :endDate=>Date.today + 1)
       for ride in rides['rides']
-        if !(idList.include? ride['id'])
-          usefulIds.push(ride['id'].to_s)
+        if ( !(id_list.include?(ride['id'].to_i)) )
+          useful_ids.push(ride['id'].to_s)
         end
       end
 
-      ride_details = usefulIds.map{|id| strava_api.get("rides/#{id}")} 
+      ride_details = useful_ids.map{|id| strava_api.get("rides/#{id}")} 
 
-      Ride.saveNewRides(ride_details)
+      Ride.save_new_rides(ride_details)
     end
   end
 end

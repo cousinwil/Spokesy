@@ -7,8 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 GlobalData.create([
 	{ name: 'club_id',
-      value: '5493'
+    value: '5493'
 	},
-    { name: 'twitter',
-      value: 'SpokeGeek'
-    }])
+  { name: 'twitter',
+    value: 'SpokeGeek'
+  },
+  {
+    name: "start_date",
+    value: "April 12, 2012"
+  }])

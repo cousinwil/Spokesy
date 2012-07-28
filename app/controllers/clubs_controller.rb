@@ -3,12 +3,13 @@ class ClubsController < ApplicationController
 
   def home
     @rides = Ride.all
+    @rides_this_month = Ride.where("date > ?", (Date.today - 28))
     @members = Member.all 
     if Club.first
       @club = Club.first
     end
-  	if ((Delayed::Job.all.empty?) && (Club.first) && (Club.first.twitter) && (Club.first.club_id))
-  		Delayed::Job.enqueue(RideJob.new)
+  	if ((Delayed::Job.all.empty?) && (Club.first))
+  		Delayed::Job.enqueue(RideJob.new, 0, 2.minutes.from_now)
   	end
     @tweets = Tweet.find(:all)
   end

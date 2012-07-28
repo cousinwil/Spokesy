@@ -1,25 +1,44 @@
 class Event < ActiveRecord::Base
   attr_accessible :date, :description, :miles, :name
 
-  def self.next_event
+  validate :validate_date
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :miles, presence: true
+
+  def self.next_events(number)
     recent = []
-    recent[0] = Event.difference(nil)
-    recent[1] = Event.difference(recent[0])
+    (0..number).each do |i|
+      recent[i] = Event.next_event(recent)
+    end
     return recent
   end
 
-  def self.difference(pevent)
+  def self.next_event(reference)
     events = Event.all
-    correct_date = Date.today + 10000
-    correct_event = nil
+    next_event_date = Date.today + 10000 #A date which is hopefully after the most recent event
+    event_following_reference = nil
+
     events.each do |event|
-      if ((event) && (event.date) && (event.date >= Date.today) && (event.date < correct_date) && (event != pevent))
-        correct_date = event.date
-        correct_event = event
+      if ((event.date >= Date.today) && (event.date < next_event_date) && !(reference.include?(event)))
+        next_event_date = event.date
+        event_following_reference = event
       end
     end
-    return correct_event
+
+    return event_following_reference
   end
 
+  private
 
+  def convert_date
+    begin
+      self.date = Date.civil(self.date.year.to_i, self.date.month.to_i, self.date.day.to_i)
+    rescue ArgumentError
+      false
+    end
+  end
+
+  def validate_date
+    errors.add("Created at date", "is invalid.") unless convert_date
+  end
 end

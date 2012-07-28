@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20120726010210) do
   add_index "members", ["user_id"], :name => "index_members_on_user_id", :unique => true
 
   create_table "rides", :force => true do |t|
-    t.integer  "athlete"
+    t.integer  "member_id"
     t.decimal  "points"
     t.decimal  "speed"
     t.decimal  "vertical"

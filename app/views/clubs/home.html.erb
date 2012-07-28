@@ -35,32 +35,29 @@
           <%= f.text_area :about_body, :class => 'top-text', :placeholder => 'Description of the club goes here' %>
         </div>
       </div>
+      <% if !(@tweets.empty?) %>
       <div class="row tweets">
         <div class="twelvecol">
           <h2 class="white">Recent <a href="https://twitter.com/<%= @club.twitter %>" class="yellow">@<%= @club.twitter %></a> Tweets</h2>
         </div>
       </div>
-      <% if Tweet.first %>
       <div class="row">
-        <% a = Tweet.first.id %>
-        <% (a..(a+2)).each do |i| %>
-          <% if i == a+2 %>
+      <% i = 0 %>
+      <% @tweets.each do |tweet| %>
+        <% break if i == 3 %>        
+          <% if i == 2 %>
             <div class="fourcol tweet last">
           <% else %>
             <div class="fourcol tweet">
           <% end %>
             <div class="body gray">
-              <% text = Tweet.bodyWithLink(Tweet.find(i).body) %>
-              <% if text.class == String %>
-                <%= Tweet.find(i).body %>
-              <% else %>
-                <%= text[0] %><a href="<%= text[1] %>"><%= text[1] %></a><%= text[2] %>
-              <% end %>
+              <%= auto_link(tweet.body.to_s) %>
             </div>
           </div>
-        <% end %>
-      </div>
+      <% i += 1 %>
       <% end %>
+      </div>
+      <% end %> 
     </article>
     <article id="merch" class="third bg-white container">
       <div class="row">
@@ -115,7 +112,7 @@
           <img src="/assets/stat-mileage.png" class="stat-icon">
           <h3 class="white">This Month</h3>
           <ol class="white">
-            <% data = getData(Ride.where('date > ?', Date.today - 28)) %>
+            <% data = get_data(@rides_this_month) %>
             <% unless ((data[0] == 0) && (data[1] == 0) && (data[2] == 0)) %>
             <li>Total Miles - <%= number_with_delimiter(number_with_precision(data[0], :precision => 1)) if data[0] %></li>
             <li>Commute Miles - <%= number_with_delimiter(number_with_precision(data[1], :precision => 1)) if data[1] %></li>
@@ -127,7 +124,7 @@
           <h2 class="white">Most Vertical</h2>
           <% past_year = (Date.today - 365).to_date %>
           <% past_month = (Date.today - 28).to_date %>
-          <% ind_vert = findHighest(method(:findVert), past_month) %>
+          <% ind_vert = find_highest(method(:find_vertical), past_month) %>
           <img src="/assets/stat-vert.png" class="stat-icon">
           <h3 class="white">This Month</h3>
           <%= render :partial => 'common/leaderboard_data', :locals => {:data => ind_vert, :units => ' feet', :decimals => 0 } %>
@@ -136,14 +133,14 @@
           <h2 class="white">Score*</h2>
           <img src="/assets/stat-points.png" class="stat-icon">
           <h3 class="white">This Month</h3>
-          <% high_pts = findHighest(method(:getPoints), past_month) %>
+          <% high_pts = find_highest(method(:get_points), past_month) %>
           <%= render :partial => 'common/leaderboard_data', :locals => { :data => high_pts, :units => ' pts', :decimals => 0} %>
         </div>
         <div class="threecol last">
           <h2 class="white">Fastest**</h2>
           <img src="/assets/stat-fastest.png" class="stat-icon">
           <h3 class="white">This Month</h3>
-          <% fastest = findHighest(method(:getAveSpeed), past_month) %>
+          <% fastest = find_highest(method(:get_average_speed), past_month) %>
           <%= render :partial => 'common/leaderboard_data', :locals => {:data => fastest, :units => ' mph', :decimals => 2 } %>
         </div>
       </div>
@@ -152,7 +149,7 @@
         <div class="threecol">
           <h3 class="white">All Time</h3>
           <ol class="white">
-            <% data = getData(@rides) %>
+            <% data = get_data(@rides) %>
             <% unless ((data[0] == 0) && (data[1] == 0) && (data[2] == 0)) %>
             <li>Total Miles - <%= number_with_delimiter(number_with_precision(data[0], :precision => 1)) if data[0] %></li>
             <li>Commute Miles - <%= number_with_delimiter(number_with_precision(data[1], :precision => 1)) if data[1] %></li>
@@ -161,18 +158,18 @@
           </ol>
         </div>
         <div class="threecol">
-          <% ind_vert = findHighest(method(:findVert), past_year) %>
+          <% ind_vert = find_highest(method(:find_vertical), past_year) %>
           <h3 class="white">All Time</h3>
           <%= render :partial => 'common/leaderboard_data', :locals => {:data => ind_vert, :units => ' feet', :decimals => 0 } %>
         </div>
         <div class="threecol">
           <h3 class="white">All Time</h3>
-          <% high_pts = findHighest(method(:getPoints), past_year) %>
+          <% high_pts = find_highest(method(:get_points), past_year) %>
           <%= render :partial => 'common/leaderboard_data', :locals => { :data => high_pts, :units => ' pts', :decimals => 0} %>
         </div>
         <div class="threecol last">
           <h3 class="white">All Time</h3>
-          <% fastest = findHighest(method(:getAveSpeed), past_year) %>
+          <% fastest = find_highest(method(:get_average_speed), past_year) %>
           <%= render :partial => 'common/leaderboard_data', :locals => {:data => fastest, :units => ' mph', :decimals => 2 } %>
         </div>        
         </div>

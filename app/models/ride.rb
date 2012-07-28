@@ -13,7 +13,6 @@ class Ride < ActiveRecord::Base
 
   def self.save_new_rides(ride_details)
     ride_details.each do |ride|
-      if (ride['ride']['startDate'].to_date > GlobalData.find(:first, :conditions => ['name = ?', 'start_date']).value.to_date)
         new_ride = Ride.new(:commute => ride['ride']['commute'], 
           :distance => ride['ride']['distance'].to_f,
           :speed => ride['ride']['averageSpeed'].to_f,
@@ -24,7 +23,6 @@ class Ride < ActiveRecord::Base
           :movingTime => ride['ride']['movingTime'].to_i,
           :member_id => (Member.find_by_strava_id(ride['ride']['athlete']['id'])).id)
         new_ride.save
-      end
     end
   end
 
@@ -37,7 +35,7 @@ class Ride < ActiveRecord::Base
     id_list = Ride.all_ids
     for member in Member.all
       useful_ids = []
-      rides = strava_api.get("rides", :athleteId=>member.strava_id, :startDate=>Date.today - 365, :endDate=>Date.today + 1)
+      rides = strava_api.get("rides", :athleteId=>member.strava_id, :startDate=>GlobalData.find(:first, :conditions => ['name = ?', 'start_date']).value.to_date, :endDate=>Date.today + 1)
       for ride in rides['rides']
         if ( !(id_list.include?(ride['id'].to_i)) )
           useful_ids.push(ride['id'].to_s)

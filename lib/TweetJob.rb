@@ -3,6 +3,7 @@ class TweetJob
 
 	def perform
 		Tweet.pull
+	ensure
 		Delayed::Job.enqueue(RideJob.new(), 0, 15.minutes.from_now)
 	end
 end

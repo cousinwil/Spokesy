@@ -12,8 +12,4 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
     return false 
   end
-
-  def index
-  end
-
 end

@@ -3,6 +3,7 @@ class RideJob
 
 	def perform
 		Ride.find_rides
+	ensure
 		Delayed::Job.enqueue(TweetJob.new(), 0, 15.minutes.from_now)
 	end
 end

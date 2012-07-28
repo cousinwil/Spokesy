@@ -1,7 +1,7 @@
  <% if User.first == nil %> 
-  <%= render :partial => 'common/create_user', :locals => {:user => User.new, :title => 'Sign up'} %>
+  <%= render :partial => 'common/create_user', :locals => {:user => @user, :title => 'Sign up'} %>
 <% elsif Club.first == nil %>
-  <%= render :partial => 'common/create_club', :locals => {:club => Club.new, :title => 'Create Club'} %>
+  <%= render :partial => 'common/create_club', :locals => {:club => @club, :title => 'Create Club'} %>
 <% else %>
   <%= form_for(@club, :action => 'post', :remote => true) do |f| %>
   <article class="main banner two">

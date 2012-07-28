@@ -1,5 +1,4 @@
 module ClubHelper
-  include StravaHelper
   include SessionsHelper
 
 #Data returned as follows

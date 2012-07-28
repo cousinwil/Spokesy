@@ -16,7 +16,10 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event])
     respond_to do |format|
       if @event.save
-        format.html # new.html.erb
+        format.html { redirect_to root_path, notice: 'WORKED' }
+      else
+        format.html { render action: "new" }
+        flash[:error] = 'Invalid email/password combination'
       end
     end
   end

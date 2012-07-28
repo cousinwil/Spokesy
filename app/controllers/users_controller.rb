@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     respond_to do |format|
+      @user.admin = true
   	  if @user.save
         format.html { redirect_to root_path, notice: 'WORKED' }
         flash[:success] = "Welcome to the club!"

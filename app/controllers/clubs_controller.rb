@@ -4,15 +4,16 @@ class ClubsController < ApplicationController
   def home
     @rides = Ride.all
     @rides_this_month = Ride.where("date > ?", (Date.today - 28))
-    @members = Member.all 
+    @members = Member.all
+    @events = Event.all
     puts "Club: " + (params || 'empty').to_s
-    puts "User: " + (params || 'empty').to_s
+
     if Club.first
       @club = Club.first
     else
       @club = Club.new(params[:club])
     end
-
+    @club.events.build
     if User.first == nil
       @user = User.new(params[:user])
     end
@@ -54,10 +55,12 @@ class ClubsController < ApplicationController
 
   def update
     @club = Club.find(params[:id])
+    puts "CLUB!! " + (params[:club] || 'empty').to_s
     respond_to do |format|
         if @club.update_attributes(params[:club])
           format.html { redirect_to root_path, notice: 'WORKED' }
         else
+          puts "DIDN'T SAVE'"
           format.html { redirect_to root_path, notice: 'FUCKED' }
         end
     end

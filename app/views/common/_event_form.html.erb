@@ -1,33 +1,6 @@
-<%= form_for(event) do |f| %>
-  <% if event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this project from being saved:</h2>
-
-      <ul>
-      <% event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div style='display:inline;position:absolute;left:500px;top:93px'>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div>
-    <%= f.label :date %><br />
-    <%= f.date_select :date %>
-  </div>
-  <div>
-    <%= f.label :miles %><br />
-    <%= f.number_field :miles %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
+  <li class="bullet gray">
+    <strong><%= event.text_field :name, :class => 'top-text'  %> (~<%= event.number_field :miles, :class => 'top-text club-events-miles'  %> Miles)</strong></br>
+    <span class="sub"><%= event.text_area :description, :class => 'top-text club-events-desc'  %></span></br>
+     <span class="sub"><%= event.date_select :date, :class => 'top-text' %> </span>
+  </li>
 </br></br></br></br></br></br></br></br></br>
-<% end %>

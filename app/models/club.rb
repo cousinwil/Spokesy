@@ -1,5 +1,8 @@
 class Club < ActiveRecord::Base
-  attr_accessible :club_id, :name, :twitter, :email_list, :home_headline, :about_headline, :about_body, :home_quote, :email_list, :mail_list_desc
+  attr_accessible :club_id, :name, :twitter, :email_list, :home_headline, :about_headline, :about_body, :home_quote, :email_list, :mail_list_desc, :events_attributes
+
+  has_many :events
+  accepts_nested_attributes_for :events, :reject_if => lambda { |a| a[:name].blank? }
 
   validate :validate_club_id
   validates :name, presence: true

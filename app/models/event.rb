@@ -1,13 +1,16 @@
 class Event < ActiveRecord::Base
-  attr_accessible :date, :description, :miles, :name
+  attr_accessible :date, :description, :miles, :name, :club_id
+
+  belongs_to :club
 
   validate :validate_date
   validates :name, presence: true, length: { maximum: 50 }
   validates :miles, presence: true
+  validates :description, presence: true, length: { maximum: 200 }
 
   def self.next_events(number)
     recent = []
-    (0..number).each do |i|
+    (0..(number-1)).each do |i|
       recent[i] = Event.next_event(recent)
     end
     return recent

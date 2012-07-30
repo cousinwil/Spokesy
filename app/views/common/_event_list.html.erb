@@ -1,13 +1,15 @@
-<% events = Event.next_events(2) %>
-<% (0..1).each do |i| %>
+<% events = Event.next_events(number) %>
+<% (0..(number-1)).each do |i| %>
 	<% if events[i] %>
 	<li class="bullet gray">
 		<strong><%= events[i].name %> (~<%= events[i].miles %> Miles)</strong> 
 		<span class="sub"><%= events[i].description %></span>
 	</li>
 	<% else %>
-	<li class="bullet gray">
-		<strong>NO EVENTS LISTED</strong> 
-	</li>
+		<% if i == 0 %>
+		<li class="bullet gray">
+			<strong>NO EVENTS LISTED</strong> 
+		</li>
+		<% end %>
 	<% end %>
 <% end %>

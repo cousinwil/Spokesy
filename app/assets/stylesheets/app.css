@@ -519,14 +519,39 @@ nav .inline {
   width:500px;
 }
 #club_about_body{
-  height:315px;
+  margin-top:7px;
+  height:346px;
   width:350px;
 }
 .top-text{
   background-color:inherit;
   border:4px solid #FFF;
+  color:inherit;
   /*border-radius:15px;*/
   font-size:inherit;
+}
+.club-events-miles{
+  width:50px;
+}
+.club-events-desc{
+  height:100px;
+  width:425px;
+  margin-top:5px;
+}
+.event-submit{
+  width:150px;
+  margin-left:25px;
+  font-size:20px;
+}
+#submit-button-club{
+  position:absolute;
+  top:680px;
+  right:21%;
+}
+.club-submit{
+  width:100px;
+  height:50px;
+  background-color:#FFF;
 }
 /* media-queries.less - Media Queries for size-specific layouts 
   --------------------------------------------------------------------------- */

@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20120726010210) do
     t.text     "description"
     t.date     "date"
     t.integer  "miles"
+    t.integer  "club_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

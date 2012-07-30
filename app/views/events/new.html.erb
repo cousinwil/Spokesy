@@ -1,7 +1,9 @@
+<%= form_for(@event) do |event| %>
 <article class="main full-page">
   <div class="row">
     <div class="twelvecol">
-      <%= render :partial => 'common/event_form', :locals => {:event => @event} %>
+      <%= render :partial => 'common/event_form', :locals => {:form => @event, :event => event} %>
     </div>
   </div>
 </article>
+<% end %>

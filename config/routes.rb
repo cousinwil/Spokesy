@@ -1,5 +1,7 @@
 SpokeGeek::Application.routes.draw do
   
+  get "admin/index"
+
   get "members/show"
 
   get "members/index"
@@ -9,14 +11,15 @@ SpokeGeek::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :clubs
 
-  root                 to: 'clubs#home'
-  match '/thanks',     to: 'clubs#thanks'
-  match '/confirmed',  to: 'clubs#confirmed'
-  match '/signup',     to: 'users#new'
-  match '/sign_in',    to: 'sessions#new'
-  match '/signout',    to: 'sessions#destroy', via: :delete
+  root                  to: 'clubs#home'
+  match '/thanks',      to: 'clubs#thanks'
+  match '/confirmed',   to: 'clubs#confirmed'
+  match '/signup',      to: 'users#new'
+  match '/sign_in',     to: 'sessions#new'
+  match '/signout',     to: 'sessions#destroy', via: :delete
   match '/members/:id', to: 'members#show'
-  match '/clubs/home', to: 'clubs#home'
+  match '/clubs/home',  to: 'clubs#home'
+  match '/admin',       to: 'admin#index'
 
 
   # The priority is based upon order of creation:

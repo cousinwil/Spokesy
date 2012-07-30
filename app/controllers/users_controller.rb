@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  include SessionsHelper
   #before_filter :admin_required # Just for now while users aren't supported
 
   def new
@@ -17,6 +17,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       @user.admin = true
   	  if @user.save
+        if @user = User.first
+          @user.update_attributes(:admin => true)
+          sign_in @user
+        end
         format.html { redirect_to root_path, notice: 'WORKED' }
         flash[:success] = "Welcome to the club!"
       else
